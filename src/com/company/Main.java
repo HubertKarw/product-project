@@ -12,5 +12,6 @@ public class Main {
         Product smartphone2 = new Smartphone(1,"samsung", 1000.1,10,"red", 1200, accessories1);
         System.out.println(smartphone1);
         System.out.println(smartphone2);
+
     }
 }

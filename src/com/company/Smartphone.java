@@ -48,10 +48,10 @@ public class Smartphone extends Product {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Smartphone{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", price=").append(price);
-        sb.append(", stock=").append(stock);
+        sb.append("id=").append(this.getId());
+        sb.append(", name='").append(this.getName()).append('\'');
+        sb.append(", price=").append(this.getPrice());
+        sb.append(", stock=").append(this.getStock());
         sb.append(", colour='").append(colour).append('\'');
         sb.append(", batteryCapacity=").append(batteryCapacity);
         sb.append(", accessories=").append(Arrays.toString(accessories));

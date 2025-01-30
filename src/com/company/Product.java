@@ -1,10 +1,10 @@
 package com.company;
 
 public abstract class Product {
-    int id;
-    String name;
-    double price;
-    int stock;
+    private int id;
+    private String name;
+    private double price;
+    private int stock;
 
     public int getId() {
         return id;
