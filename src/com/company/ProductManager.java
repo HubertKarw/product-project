@@ -29,7 +29,7 @@ public class ProductManager {
         }
     }
 
-    public void ShowProducts(){
+    public void showProducts(){
         List<Product> products = this.getProducts();
         for (Product p: products) {
             System.out.println(p.toString());
