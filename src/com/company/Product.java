@@ -38,6 +38,29 @@ public abstract class Product {
         this.stock = stock;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+
+        Product product = (Product) o;
+
+        if (getId() != product.getId()) return false;
+        if (Double.compare(product.getPrice(), getPrice()) != 0) return false;
+        return getName().equals(product.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = getId();
+        result = 31 * result + getName().hashCode();
+        temp = Double.doubleToLongBits(getPrice());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
     public Product(int id, String name, double price, int stock) {
         this.id = id;
         this.name = name;
