@@ -18,6 +18,15 @@ public class Cart extends ProductManager{
         this.clientName = clientName;
     }
 
+    public void placeOrder(){
+        if (this.getProducts().isEmpty()) {
+            System.out.println("your cart is empty");
+        }else {
+            this.getProducts().stream().forEach(this::sellProduct);
+            System.out.println("your order has been placed");
+        }
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Cart{");
