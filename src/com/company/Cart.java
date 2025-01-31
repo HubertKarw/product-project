@@ -1,7 +1,7 @@
 package com.company;
 
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Collections;
 
 public class Cart extends ProductManager{
     private String clientName;
@@ -27,7 +27,7 @@ public class Cart extends ProductManager{
                     .stream()
                     .forEach(this::sellProduct);
             System.out.println("your order has been placed");
-            this.setProducts(java.util.Collections.emptyList());
+            this.setProducts(Collections.emptyList());
         }
     }
 
