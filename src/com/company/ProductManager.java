@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ProductManager {
     private List<Product> products;
-
+//metoda do szukania po nazwie
     public ProductManager(List<Product> products) {
         this.products = products;
     }
@@ -25,7 +25,7 @@ public class ProductManager {
     }
     public void sellProduct(Product product){
         if (this.products.contains(product)) {
-            product.setStock(product.getStock()-1);
+            product.setStock(product.getStock()-1);//walidacja, zmniejszenei stocku w produkcie a nie w product managerze
         }
     }
 
