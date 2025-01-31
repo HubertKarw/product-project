@@ -5,7 +5,8 @@ import com.company.test.Test;
 public class Main {
 
     public static void main(String[] args) {
-        Test.task1Test();
-        Test.task2Test();
+//        Test.task1Test();
+//        Test.task2Test();
+        Test.testTask3();
     }
 }
