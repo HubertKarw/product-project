@@ -3,7 +3,7 @@ package com.company;
 public abstract class Product {
     private int id;
     private String name;
-    private double price;
+    private double price;  //Zmiana na big decimala
     private int stock;
 
     public int getId() {

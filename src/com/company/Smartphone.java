@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Smartphone extends Product {
     String colour;
     int batteryCapacity;
-    Electronics[] accessories;
+    Electronics[] accessories;//lista
 
     public Smartphone(int id, String name, double price, int stock, String colour, int batteryCapacity, Electronics[] accessories) {
         super(id, name, price, stock);

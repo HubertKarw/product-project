@@ -1,7 +1,7 @@
 package com.company;
 
 public class Computer extends Product {
-    private String processor;
+    private String processor;// klasy z enumami zawierajace stringi z imieniem ale dodatkowymi informacjami firma/hz/itd
     private int ram;
 
     public Computer(int id, String name, double price, int stock) {
