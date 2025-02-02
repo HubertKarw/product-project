@@ -1,5 +1,6 @@
 package com.company;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Collections;
 
@@ -29,6 +30,12 @@ public class Cart extends ProductManager{
             System.out.println("your order has been placed");
             this.setProducts(Collections.emptyList());
         }
+    }
+    public BigDecimal totalPrice(){
+       return this.getProducts()
+               .stream()
+               .map(Product::getPrice)
+               .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     @Override

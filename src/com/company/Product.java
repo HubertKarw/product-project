@@ -1,9 +1,11 @@
 package com.company;
 
+import java.math.BigDecimal;
+
 public abstract class Product {
     private int id;
     private String name;
-    private double price;
+    private BigDecimal price;
     private int stock;
 
     public int getId() {
@@ -22,11 +24,11 @@ public abstract class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -46,22 +48,18 @@ public abstract class Product {
         Product product = (Product) o;
 
         if (getId() != product.getId()) return false;
-        if (Double.compare(product.getPrice(), getPrice()) != 0) return false;
-        return getName().equals(product.getName());
+        if (!getName().equals(product.getName())) return false;
+        return getPrice().equals(product.getPrice());
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = getId();
+        int result = getId();
         result = 31 * result + getName().hashCode();
-        temp = Double.doubleToLongBits(getPrice());
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
-    public Product(int id, String name, double price, int stock) {
+    public Product(int id, String name, BigDecimal price, int stock) {
         this.id = id;
         this.name = name;
         this.price = price;
