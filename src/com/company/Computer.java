@@ -1,10 +1,12 @@
 package com.company;
 
+import java.math.BigDecimal;
+
 public class Computer extends Product {
     private String processor;
     private int ram;
 
-    public Computer(int id, String name, double price, int stock) {
+    public Computer(int id, String name, BigDecimal price, int stock) {
         super(id, name, price, stock);
     }
 

@@ -1,5 +1,6 @@
 package com.company;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 public class Smartphone extends Product {
@@ -7,14 +8,14 @@ public class Smartphone extends Product {
     int batteryCapacity;
     Electronics[] accessories;
 
-    public Smartphone(int id, String name, double price, int stock, String colour, int batteryCapacity, Electronics[] accessories) {
+    public Smartphone(int id, String name, BigDecimal price, int stock, String colour, int batteryCapacity, Electronics[] accessories) {
         super(id, name, price, stock);
         this.colour = colour;
         this.batteryCapacity = batteryCapacity;
         this.accessories = accessories;
     }
 
-    public Smartphone(int id, String name, double price, int stock, String colour, int batteryCapacity) {
+    public Smartphone(int id, String name, BigDecimal price, int stock, String colour, int batteryCapacity) {
         super(id, name, price, stock);
         this.colour = colour;
         this.batteryCapacity = batteryCapacity;
