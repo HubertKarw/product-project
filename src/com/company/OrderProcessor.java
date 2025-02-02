@@ -9,7 +9,7 @@ public class OrderProcessor {
     public OrderProcessor(Order order){
         this.orderToProcess = order;
     }
-    public String createReceipt(){
+    public static String createReceipt(Order orderToProcess){
         BigDecimal total = orderToProcess.getTotalPrice();
         String clientName= orderToProcess.getClient();
         Cart cart = orderToProcess.getCart();
@@ -21,11 +21,11 @@ public class OrderProcessor {
                 .stream()
                 .map(product -> (product.getId() +" "+product.getName()+"\t\t\t"+ product.getPrice().toPlainString()+"pln"))
                 .collect(Collectors.joining("\n")));
-        sb.append("Total Price: ").append(total.toPlainString()).append("pln");
+        sb.append("\nTotal Price: ").append(total.toPlainString()).append("pln");
         return sb.toString();
     }
-    public void process(){
-        System.out.println(this.createReceipt());
+    public static void process(Order orderToProcess){
+        System.out.println(createReceipt(orderToProcess));
         orderToProcess.getCart().placeOrder();
     }
 }

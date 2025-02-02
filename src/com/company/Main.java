@@ -9,6 +9,7 @@ public class Main {
 //        Test.task2Test();
 //        Test.testTask3();
 //        Test.testTask4();
-        Test.testTask5();
+//        Test.testTask5();
+        Test.testTask6();
     }
 }
