@@ -1,6 +1,7 @@
 package com.company;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 
@@ -9,6 +10,11 @@ public class Cart extends ProductManager{
 
     public Cart(List<Product> products, String clientName) {
         super(products);
+        this.clientName = clientName;
+    }
+
+    public Cart(String clientName) {
+        super(new ArrayList<Product>());
         this.clientName = clientName;
     }
 
@@ -28,7 +34,7 @@ public class Cart extends ProductManager{
                     .stream()
                     .forEach(this::sellProduct);
             System.out.println("your order has been placed");
-            this.setProducts(Collections.emptyList());
+            this.setProducts(new ArrayList<Product>());
         }
     }
     public BigDecimal totalPrice(){
