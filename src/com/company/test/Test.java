@@ -1,9 +1,6 @@
 package com.company.test;
 
-import com.company.Computer;
-import com.company.Electronics;
-import com.company.Product;
-import com.company.Smartphone;
+import com.company.*;
 
 public class Test{
     public static void task1Test(){
@@ -22,5 +19,13 @@ public class Test{
         System.out.println(electronics);
         System.out.println(smartphone1);
         System.out.println(smartphone2);
+    }
+    public static void processorTest(){
+        Processor processor = new Processor("Intel",8,34000);
+        System.out.println(processor);
+    }
+    public static void ramTest(){
+        RandomAccessMemory ram = new RandomAccessMemory("Kingstone",8,Unit.GB);
+        System.out.println(ram);
     }
 }
