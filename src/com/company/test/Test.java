@@ -23,6 +23,14 @@ public class Test{
         System.out.println(smartphone1);
         System.out.println(smartphone2);
     }
+    public static void processorTest(){
+        Processor processor = new Processor("Intel",8,34000);
+        System.out.println(processor);
+    }
+    public static void ramTest(){
+        RandomAccessMemory ram = new RandomAccessMemory("Kingstone",8,Unit.GB);
+        System.out.println(ram);
+    }
     public static void task2Test(){
 //        creating products and adding them to product manager
         Product computer1 = new Computer(1,"Dell",123,100);
