@@ -33,11 +33,32 @@ public abstract class Product {
     public int getStock() {
         return stock;
     }
+    public void decreaseStock(int quantity){
+        if(this.getStock()<quantity){
+            throw new IllegalArgumentException("not enough productys in stock");
+        }else{
+            this.setStock(this.getStock()-quantity);
+        }
+    }
+    public void increaseStock(int quantity){
+        this.setStock(this.getStock()+quantity);
+    }
 
     public void setStock(int stock) {
         this.stock = stock;
     }
-
+    public boolean nameEquals(String name){
+        if (name.equals(this.getName())){
+            return true;
+        }
+        return false;
+    }
+    public boolean idEquals(int id){
+        if (id == this.getId()){
+            return true;
+        }
+        return false;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
