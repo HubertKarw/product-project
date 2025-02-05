@@ -7,7 +7,7 @@ import java.util.List;
 public class Smartphone extends Product {
     private String colour;
     private int batteryCapacity;
-    private List<Electronics> accessories;//lista
+    private List<Electronics> accessories;
 
     public Smartphone(int id, String name, double price, int stock, String colour, int batteryCapacity, List<Electronics> accessories) {
         super(id, name, price, stock);
