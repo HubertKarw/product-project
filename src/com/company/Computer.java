@@ -1,28 +1,31 @@
 package com.company;
 
 public class Computer extends Product {
-    private String processor;
-    private int ram;
+    private Processor processor;// klasy z enumami zawierajace stringi z imieniem ale dodatkowymi informacjami firma/hz/itd
+    private RandomAccessMemory ram;
 
     public Computer(int id, String name, double price, int stock) {
         super(id, name, price, stock);
     }
+    public Computer(int id, String name, double price, int stock,Processor processor, RandomAccessMemory ram) {
+        super(id, name, price, stock);
+        this.processor = processor;
+        this.ram = ram;
+    }
 
-    public String getProcessor() {
+    public Processor getProcessor() {
         return processor;
     }
 
-    public void setProcessor(String processor) {
+    public void setProcessor(Processor processor) {
         this.processor = processor;
     }
 
-
-
-    public int getRam() {
+    public RandomAccessMemory getRam() {
         return ram;
     }
 
-    public void setRam(int ram) {
+    public void setRam(RandomAccessMemory ram) {
         this.ram = ram;
     }
 

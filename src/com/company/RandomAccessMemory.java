@@ -40,7 +40,7 @@ public class RandomAccessMemory {
         final StringBuilder sb = new StringBuilder("RandomAccessMemory{");
         sb.append("manufacturer='").append(manufacturer).append('\'');
         sb.append(", memory=").append(memory);
-        sb.append(", unit=").append(unit);
+        sb.append(", unit=").append(unit.getUnit());
         sb.append('}');
         return sb.toString();
     }
