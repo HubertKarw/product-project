@@ -1,13 +1,15 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Smartphone extends Product {
-    String colour;
-    int batteryCapacity;
-    Electronics[] accessories;//lista
+    private String colour;
+    private int batteryCapacity;
+    private List<Electronics> accessories;//lista
 
-    public Smartphone(int id, String name, double price, int stock, String colour, int batteryCapacity, Electronics[] accessories) {
+    public Smartphone(int id, String name, double price, int stock, String colour, int batteryCapacity, List<Electronics> accessories) {
         super(id, name, price, stock);
         this.colour = colour;
         this.batteryCapacity = batteryCapacity;
@@ -18,7 +20,7 @@ public class Smartphone extends Product {
         super(id, name, price, stock);
         this.colour = colour;
         this.batteryCapacity = batteryCapacity;
-        this.accessories= new Electronics[0];
+        this.accessories = new ArrayList<>();
     }
 
     public String getColour() {
@@ -37,11 +39,11 @@ public class Smartphone extends Product {
         this.batteryCapacity = batteryCapacity;
     }
 
-    public Electronics[] getAccessories() {
+    public List<Electronics> getAccessories() {
         return accessories;
     }
 
-    public void setAccessories(Electronics[] accessories) {
+    public void setAccessories(List<Electronics> accessories) {
         this.accessories = accessories;
     }
 
@@ -54,7 +56,7 @@ public class Smartphone extends Product {
         sb.append(", stock=").append(this.getStock());
         sb.append(", colour='").append(colour).append('\'');
         sb.append(", batteryCapacity=").append(batteryCapacity);
-        sb.append(", accessories=").append(Arrays.toString(accessories));
+        sb.append(", accessories=").append(accessories.toString());
         sb.append('}');
         return sb.toString();
     }

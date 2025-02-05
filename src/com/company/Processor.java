@@ -1,9 +1,9 @@
 package com.company;
 
 public class Processor {
-    String manufacturer;
-    int core;
-    double clockSpeed;
+    private String manufacturer;
+    private int core;
+    private double clockSpeed;
 
     public Processor(String manufacturer, int core, double clockSpeed) {
         this.manufacturer = manufacturer;
