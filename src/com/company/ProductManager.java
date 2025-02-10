@@ -29,13 +29,15 @@ public class ProductManager {
 
     public void sellProduct(Product product) {
         if (this.products.contains(product)) {
-            product.setStock(product.getStock() - 1);//walidacja, zmniejszenei stocku w produkcie a nie w product managerze
+            product.decreaseStock(1);
         }
     }
     public Product findByName(String name) throws AttributeNotFoundException {
-        return products.stream().
-                filter(product -> product.nameEquals(name)).
-                limit(1).findFirst().orElseThrow(AttributeNotFoundException::new);
+        return products.stream()
+                .filter(product -> product.isNameEquals(name))
+                .limit(1)
+                .findFirst()
+                .orElseThrow(AttributeNotFoundException::new);
     }
     public Product findByID(int id){
         return null;
