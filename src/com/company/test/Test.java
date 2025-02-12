@@ -8,11 +8,12 @@ import java.util.List;
 public class Test {
     public static void creatingAndCheckingCorrectDisplayOfAllProducts() {
 //        creating products
-        Processor processor = new Processor("Intel",6,40000);
-        RandomAccessMemory ram = new RandomAccessMemory("Kingstone",16,Unit.GB);
-        Product computer1 = new Computer(1, "Dell", 123, 100,processor,ram);
+        Processor processor = new Processor("Intel", 6, 40000);
+        RandomAccessMemory ram = new RandomAccessMemory("Kingstone", 16, Unit.GB);
+        Product computer1 = new Computer(1, "Dell", 123, 100, processor, ram);
         Product computer2 = new Computer(2, "Dell", 123, 100);
-        Product computer3 = new Computer(3, "Dell", 123, 100);;
+        Product computer3 = new Computer(3, "Dell", 123, 100);
+        ;
         Product electronics = new Electronics(20, "cable", 10, 1);
         List<Electronics> accessories1 = new ArrayList<>();
         accessories1.add((Electronics) electronics);

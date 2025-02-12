@@ -7,7 +7,8 @@ public class Computer extends Product {
     public Computer(int id, String name, double price, int stock) {
         super(id, name, price, stock);
     }
-    public Computer(int id, String name, double price, int stock,Processor processor, RandomAccessMemory ram) {
+
+    public Computer(int id, String name, double price, int stock, Processor processor, RandomAccessMemory ram) {
         super(id, name, price, stock);
         this.processor = processor;
         this.ram = ram;
