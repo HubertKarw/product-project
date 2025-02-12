@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
-    public static void task1Test() {
+    public static void creatingAndCheckingCorrectDisplayOfAllProducts() {
 //        creating products
         Processor processor = new Processor("Intel",6,40000);
         RandomAccessMemory ram = new RandomAccessMemory("Kingstone",16,Unit.GB);

@@ -5,7 +5,7 @@ import com.company.test.Test;
 public class Main {
 
     public static void main(String[] args) {
-        Test.task1Test();
+        Test.creatingAndCheckingCorrectDisplayOfAllProducts();
         Test.processorTest();
         Test.ramTest();
     }
