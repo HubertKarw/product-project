@@ -1,16 +1,19 @@
 package com.company;
 
+import java.math.BigDecimal;
+import java.util.UUID;
+
 public abstract class Product {
-    private int id;
+    private UUID id;
     private String name;
-    private double price;
+    private BigDecimal price;
     private int stock;
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -22,11 +25,11 @@ public abstract class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -38,8 +41,8 @@ public abstract class Product {
         this.stock = stock;
     }
 
-    public Product(int id, String name, double price, int stock) {
-        this.id = id;
+    public Product( String name, BigDecimal price, int stock) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.price = price;
         this.stock = stock;
