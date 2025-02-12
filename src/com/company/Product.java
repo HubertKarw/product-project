@@ -1,16 +1,20 @@
 package com.company;
 
+import java.util.Locale;
+import java.util.UUID;
+
 public abstract class Product {
-    private int id;
+    private UUID id;
+//    private int id;
     private String name;
     private double price;
     private int stock;
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -51,10 +55,10 @@ public abstract class Product {
     }
 
     public boolean isNameEquals(String name) {
-        return name.equals(this.getName());
+        return name.toUpperCase(Locale.ROOT).equals(this.getName().toUpperCase(Locale.ROOT));
     }
 
-    public boolean isIdEquals(int id) {
+    public boolean isIdEquals(UUID id) {
         return id == this.getId();
     }
 
@@ -74,15 +78,15 @@ public abstract class Product {
     public int hashCode() {
         int result;
         long temp;
-        result = getId();
+        result = getId().version();
         result = 31 * result + getName().hashCode();
         temp = Double.doubleToLongBits(getPrice());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
-    public Product(int id, String name, double price, int stock) {
-        this.id = id;
+    public Product(String name, double price, int stock) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.price = price;
         this.stock = stock;

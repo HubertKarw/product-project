@@ -9,15 +9,15 @@ public class Smartphone extends Product {
     private int batteryCapacity;
     private List<Electronics> accessories;
 
-    public Smartphone(int id, String name, double price, int stock, String colour, int batteryCapacity, List<Electronics> accessories) {
-        super(id, name, price, stock);
+    public Smartphone( String name, double price, int stock, String colour, int batteryCapacity, List<Electronics> accessories) {
+        super(name, price, stock);
         this.colour = colour;
         this.batteryCapacity = batteryCapacity;
         this.accessories = accessories;
     }
 
-    public Smartphone(int id, String name, double price, int stock, String colour, int batteryCapacity) {
-        super(id, name, price, stock);
+    public Smartphone(String name, double price, int stock, String colour, int batteryCapacity) {
+        super( name, price, stock);
         this.colour = colour;
         this.batteryCapacity = batteryCapacity;
         this.accessories = new ArrayList<>();

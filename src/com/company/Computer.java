@@ -4,11 +4,11 @@ public class Computer extends Product {
     private Processor processor;
     private RandomAccessMemory ram;
 
-    public Computer(int id, String name, double price, int stock) {
-        super(id, name, price, stock);
+    public Computer( String name, double price, int stock) {
+        super( name, price, stock);
     }
-    public Computer(int id, String name, double price, int stock,Processor processor, RandomAccessMemory ram) {
-        super(id, name, price, stock);
+    public Computer( String name, double price, int stock,Processor processor, RandomAccessMemory ram) {
+        super( name, price, stock);
         this.processor = processor;
         this.ram = ram;
     }

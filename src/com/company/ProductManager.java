@@ -2,6 +2,7 @@ package com.company;
 
 import javax.management.AttributeNotFoundException;
 import java.util.List;
+import java.util.UUID;
 
 public class ProductManager {
     private List<Product> products;
@@ -39,8 +40,12 @@ public class ProductManager {
                 .findFirst()
                 .orElseThrow(AttributeNotFoundException::new);
     }
-    public Product findByID(int id){
-        return null;
+    public Product findByID(UUID id) throws AttributeNotFoundException {
+        return products.stream()
+                .filter(product -> product.isIdEquals(id))
+                .limit(1)
+                .findFirst()
+                .orElseThrow(AttributeNotFoundException::new);
     }
 
     public void showProducts() {
