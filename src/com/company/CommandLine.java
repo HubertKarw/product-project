@@ -1,13 +1,13 @@
 package com.company;
 
 public interface CommandLine {
-    void printCart();
+    void printCart(Cart cart);
 
-    void printProducts();
+    void printProducts(ProductManager productManager);
 
-    void printOrder();
+    void printOrder(Order order);
 
-    void addToCart();
+    void addToCart(Cart cart, Product product);
 
-    void removeFromCart();
+    void removeFromCart(Cart cart, Product product);
 }
