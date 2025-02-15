@@ -1,13 +1,14 @@
 package com.company;
 
-import java.util.Locale;
+import java.math.BigDecimal;
 import java.util.UUID;
+import java.util.Locale;
+
 
 public abstract class Product {
     private UUID id;
-//    private int id;
     private String name;
-    private double price;
+    private BigDecimal price;
     private int stock;
 
     public UUID getId() {
@@ -26,11 +27,11 @@ public abstract class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -85,7 +86,7 @@ public abstract class Product {
         return result;
     }
 
-    public Product(String name, double price, int stock) {
+    public Product( String name, BigDecimal price, int stock) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.price = price;

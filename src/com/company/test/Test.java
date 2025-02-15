@@ -3,23 +3,24 @@ package com.company.test;
 import com.company.*;
 
 import javax.management.AttributeNotFoundException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
-    public static void task1Test() {
+    public static void creatingAndCheckingCorrectDisplayOfAllProducts() {
 //        creating products
         Processor processor = new Processor("Intel", 6, 40000);
         RandomAccessMemory ram = new RandomAccessMemory("Kingstone", 16, Unit.GB);
-        Product computer1 = new Computer("Dell", 123, 100, processor, ram);
-        Product computer2 = new Computer("Dell", 123, 100);
-        Product computer3 = new Computer("Dell", 123, 100);
+        Product computer1 = new Computer("Dell", BigDecimal.valueOf(120), 100, processor, ram);
+        Product computer2 = new Computer("Dell", BigDecimal.valueOf(120), 100);
+        Product computer3 = new Computer("Dell", BigDecimal.valueOf(120), 100);
         ;
-        Product electronics = new Electronics("cable", 10, 1);
+        Product electronics = new Electronics("cable", BigDecimal.valueOf(120), 1);
         List<Electronics> accessories1 = new ArrayList<>();
         accessories1.add((Electronics) electronics);
-        Product smartphone1 = new Smartphone("samsung", 1000.1, 10, "red", 1200);
-        Product smartphone2 = new Smartphone("samsung", 1000.1, 10, "red", 1200, accessories1);
+        Product smartphone1 = new Smartphone("samsung", BigDecimal.valueOf(120), 10, "red", 1200);
+        Product smartphone2 = new Smartphone("samsung", BigDecimal.valueOf(120), 10, "red", 1200, accessories1);
 //        printing created products
         System.out.println(computer1);
         System.out.println(computer2);

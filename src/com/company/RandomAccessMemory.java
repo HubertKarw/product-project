@@ -1,9 +1,9 @@
 package com.company;
 
 public class RandomAccessMemory {
-    String manufacturer;
-    int memory;
-    Unit unit;
+    private String manufacturer;
+    private int memory;
+    private Unit unit;
 
     public RandomAccessMemory(String manufacturer, int memory, Unit unit) {
         this.manufacturer = manufacturer;
