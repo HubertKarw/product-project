@@ -33,6 +33,7 @@ public class ProductManager {
             product.decreaseStock(1);
         }
     }
+
     public Product findByName(String name) throws AttributeNotFoundException {
         return products.stream()
                 .filter(product -> product.isNameEquals(name))
@@ -40,6 +41,7 @@ public class ProductManager {
                 .findFirst()
                 .orElseThrow(AttributeNotFoundException::new);
     }
+
     public Product findByID(UUID id) throws AttributeNotFoundException {
         return products.stream()
                 .filter(product -> product.isIdEquals(id))

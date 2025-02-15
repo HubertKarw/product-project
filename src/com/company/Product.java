@@ -86,7 +86,7 @@ public abstract class Product {
         return result;
     }
 
-    public Product( String name, BigDecimal price, int stock) {
+    public Product(String name, BigDecimal price, int stock) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.price = price;

@@ -3,8 +3,8 @@ package com.company;
 import java.math.BigDecimal;
 
 public class Electronics extends Product {
-    public Electronics( String name, BigDecimal price, int stock) {
-        super( name, price, stock);
+    public Electronics(String name, BigDecimal price, int stock) {
+        super(name, price, stock);
     }
 
     @Override
