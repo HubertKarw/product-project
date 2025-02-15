@@ -40,7 +40,7 @@ public class Test {
         System.out.println(ram);
     }
 
-    public static void task2Test() {
+    public static void addingAndRemovingProductsToProductManager() {
 //        creating products and adding them to product manager
         Product computer1 = new Computer("Dell", BigDecimal.valueOf(120), 100);
         Product computer2 = new Computer("Dell", BigDecimal.valueOf(120), 100);
@@ -62,7 +62,7 @@ public class Test {
         manager.showProducts();
     }
 
-    public static void findByIdAndNameTest() {
+    public static void findByNameTest() {
         Processor processor = new Processor("Intel", 6, 40000);
         RandomAccessMemory ram = new RandomAccessMemory("Kingstone", 16, Unit.GB);
         Product computer1 = new Computer("Dell", BigDecimal.valueOf(120), 100, processor, ram);
