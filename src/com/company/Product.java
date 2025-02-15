@@ -71,7 +71,7 @@ public abstract class Product {
         Product product = (Product) o;
 
         if (getId() != product.getId()) return false;
-        if (Double.compare(product.getPrice(), getPrice()) != 0) return false;
+        if ((product.getPrice().compareTo(getPrice())) != 0) return false;
         return getName().equals(product.getName());
     }
 
@@ -81,7 +81,7 @@ public abstract class Product {
         long temp;
         result = getId().version();
         result = 31 * result + getName().hashCode();
-        temp = Double.doubleToLongBits(getPrice());
+        temp = getPrice().byteValue();
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
