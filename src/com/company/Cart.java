@@ -30,20 +30,23 @@ public class Cart {
     public void setClient(Client client) {
         this.client = client;
     }
-    public void addToCart(Product product){
-        if (product.getStock()>0){
+
+    public void addToCart(Product product) {
+        if (product.getStock() > 0) {
             this.products.add(product);
-        }else{
+        } else {
             throw new IllegalArgumentException("not enough in stock");
         }
     }
-    public void removeFromCart(Product product){
-        if(this.products.contains(product)){
+
+    public void removeFromCart(Product product) {
+        if (this.products.contains(product)) {
             this.products.remove(product);
-        }else{
+        } else {
             throw new IllegalArgumentException("no such product in cart");
         }
     }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Cart{");
