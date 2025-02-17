@@ -29,7 +29,7 @@ public class ProductManager {
 
     public void sellProduct(Product product) {
         if (this.products.contains(product)) {
-            product.decreaseStock(1);
+            System.out.println(product);
         }
     }
 
