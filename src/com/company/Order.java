@@ -1,16 +1,17 @@
 package com.company;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Order {
     private Cart cart;
     private String client;
     private BigDecimal totalPrice;
 
-    public Order(Cart cart){
+    public Order(Cart cart) {
         this.cart = cart;
         this.client = cart.getClientName();
-        this.totalPrice =cart.totalPrice();
+        this.totalPrice = cart.totalPrice();
     }
 
     public Cart getCart() {
@@ -35,6 +36,10 @@ public class Order {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public void applyDiscount(BigDecimal discount) {
+        this.totalPrice = this.totalPrice.multiply(BigDecimal.ONE.subtract(discount)).setScale(2, RoundingMode.HALF_UP);
     }
 
     @Override

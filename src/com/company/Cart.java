@@ -1,6 +1,7 @@
 package com.company;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Collections;
 
@@ -35,7 +36,8 @@ public class Cart extends ProductManager{
        return this.getProducts()
                .stream()
                .map(Product::getPrice)
-               .reduce(BigDecimal.ZERO, BigDecimal::add);
+               .reduce(BigDecimal.ZERO, BigDecimal::add)
+               .setScale(2, RoundingMode.HALF_UP);
     }
 
     @Override
