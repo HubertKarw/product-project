@@ -34,6 +34,7 @@ public class Cart {
     public void addToCart(Product product) {
         if (product.getStock() > 0) {
             this.products.add(product);
+            product.decreaseStock(1);
         } else {
             throw new IllegalArgumentException("not enough in stock");
         }
@@ -42,6 +43,7 @@ public class Cart {
     public void removeFromCart(Product product) {
         if (this.products.contains(product)) {
             this.products.remove(product);
+            product.increaseStock(1);
         } else {
             throw new IllegalArgumentException("no such product in cart");
         }
