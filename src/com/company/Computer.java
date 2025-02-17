@@ -1,28 +1,34 @@
 package com.company;
 
-public class Computer extends Product {
-    private String processor;
-    private int ram;
+import java.math.BigDecimal;
 
-    public Computer(int id, String name, double price, int stock) {
-        super(id, name, price, stock);
+public class Computer extends Product {
+    private Processor processor;
+    private RandomAccessMemory ram;
+
+    public Computer(String name, BigDecimal price, int stock) {
+        super(name, price, stock);
     }
 
-    public String getProcessor() {
+    public Computer(String name, BigDecimal price, int stock, Processor processor, RandomAccessMemory ram) {
+        super(name, price, stock);
+        this.processor = processor;
+        this.ram = ram;
+    }
+
+    public Processor getProcessor() {
         return processor;
     }
 
-    public void setProcessor(String processor) {
+    public void setProcessor(Processor processor) {
         this.processor = processor;
     }
 
-
-
-    public int getRam() {
+    public RandomAccessMemory getRam() {
         return ram;
     }
 
-    public void setRam(int ram) {
+    public void setRam(RandomAccessMemory ram) {
         this.ram = ram;
     }
 

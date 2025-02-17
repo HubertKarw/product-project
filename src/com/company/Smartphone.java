@@ -1,24 +1,26 @@
 package com.company;
 
-import java.util.Arrays;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Smartphone extends Product {
-    String colour;
-    int batteryCapacity;
-    Electronics[] accessories;
+    private String colour;
+    private int batteryCapacity;
+    private List<Electronics> accessories;
 
-    public Smartphone(int id, String name, double price, int stock, String colour, int batteryCapacity, Electronics[] accessories) {
-        super(id, name, price, stock);
+    public Smartphone(String name, BigDecimal price, int stock, String colour, int batteryCapacity, List<Electronics> accessories) {
+        super(name, price, stock);
         this.colour = colour;
         this.batteryCapacity = batteryCapacity;
         this.accessories = accessories;
     }
 
-    public Smartphone(int id, String name, double price, int stock, String colour, int batteryCapacity) {
-        super(id, name, price, stock);
+    public Smartphone(String name, BigDecimal price, int stock, String colour, int batteryCapacity) {
+        super(name, price, stock);
         this.colour = colour;
         this.batteryCapacity = batteryCapacity;
-        this.accessories= new Electronics[0];
+        this.accessories = new ArrayList<>();
     }
 
     public String getColour() {
@@ -37,11 +39,11 @@ public class Smartphone extends Product {
         this.batteryCapacity = batteryCapacity;
     }
 
-    public Electronics[] getAccessories() {
+    public List<Electronics> getAccessories() {
         return accessories;
     }
 
-    public void setAccessories(Electronics[] accessories) {
+    public void setAccessories(List<Electronics> accessories) {
         this.accessories = accessories;
     }
 
@@ -54,7 +56,7 @@ public class Smartphone extends Product {
         sb.append(", stock=").append(this.getStock());
         sb.append(", colour='").append(colour).append('\'');
         sb.append(", batteryCapacity=").append(batteryCapacity);
-        sb.append(", accessories=").append(Arrays.toString(accessories));
+        sb.append(", accessories=").append(accessories.toString());
         sb.append('}');
         return sb.toString();
     }
