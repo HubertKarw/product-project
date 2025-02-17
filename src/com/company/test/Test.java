@@ -79,7 +79,7 @@ public class Test {
 
     }
 
-    public static void testTask3() {
+    public static void creatingCartAndPrintingInformation() {
         Processor processor = new Processor("Intel", 6, 40000);
         RandomAccessMemory ram = new RandomAccessMemory("Kingstone", 16, Unit.GB);
         Product computer1 = new Computer("Dell", BigDecimal.valueOf(120), 100, processor, ram);
