@@ -8,5 +8,6 @@ public class Main {
         Test.creatingAndCheckingCorrectDisplayOfAllProducts();
         Test.processorTest();
         Test.ramTest();
+        Test.addingAndRemovingProductsToProductManager();
     }
 }
