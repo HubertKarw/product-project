@@ -7,7 +7,6 @@ import java.util.UUID;
 public class ProductManager {
     private List<Product> products;
 
-    //metoda do szukania po nazwie
     public ProductManager(List<Product> products) {
         this.products = products;
     }
