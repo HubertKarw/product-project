@@ -96,4 +96,9 @@ public class Test {
         Cart cart = new Cart(products, client);
         System.out.println(cart);
     }
+
+    public static void creatingClient(){
+        Client client1 = new Client("username", "address");
+        System.out.println(client1);
+    }
 }
