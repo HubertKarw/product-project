@@ -25,4 +25,13 @@ public class Client {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Client{");
+        sb.append("username='").append(username).append('\'');
+        sb.append(", address='").append(address).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }
