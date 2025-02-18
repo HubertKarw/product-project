@@ -2,6 +2,7 @@ package com.company;
 
 import javax.management.AttributeNotFoundException;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class ProductManager {
@@ -47,6 +48,33 @@ public class ProductManager {
                 .limit(1)
                 .findFirst()
                 .orElseThrow(AttributeNotFoundException::new);
+    }
+    public void addProductToCart(Cart cart, UUID productId){
+        //sprawdzic czy produkt isnieje
+        Product product = null;
+        try {
+            product = findByID(productId);
+        } catch (AttributeNotFoundException e) {
+            e.printStackTrace();
+        }
+        //dodanie rpoduktu do cart
+        if(!Objects.isNull(product)){
+            cart.addToCart(product);
+        }
+        //uSUNAC PRODUCT Z PRODUCT MANAGFE STOCK--
+    }
+    public void  removeProductFromCart(Cart cart, UUID productId){
+        Product product = null;
+        try {
+            product = findByID(productId);
+        } catch (AttributeNotFoundException e) {
+            e.printStackTrace();
+        }
+        if(!Objects.isNull(product)){
+            cart.removeFromCart(product);
+        }
+        //sprawdz czy produkt jest w carcie usuńz cart
+
     }
 
     public void showProducts() {
