@@ -49,16 +49,25 @@ public class ProductManager {
                 .findFirst()
                 .orElseThrow(AttributeNotFoundException::new);
     }
-    public void addProductToCart(Cart cart, UUID productId){
+    public void addProductToCart(Cart cart, UUID productId, int quantity){
         //sprawdzic czy produkt isnieje
         Product product = null;
+        Product cartProduct = null;
         try {
             product = findByID(productId);
-        } catch (AttributeNotFoundException e) {
+            //cartProduct = new Product(productId,product.getName(),product.getPrice(),1);
+            cartProduct = product.clone();
+            cartProduct.setStock(quantity);
+
+        } catch (AttributeNotFoundException | CloneNotSupportedException e) {
             e.printStackTrace();
         }
         //dodanie rpoduktu do cart
         if(!Objects.isNull(product)){
+//            UUID p =cart.getProducts().stream()
+//                    .map(Product::getId)
+//                    .filter(id-> id.equals(productId))
+//                    .findFirst().orElseThrow();
             cart.addToCart(product);
         }
         //uSUNAC PRODUCT Z PRODUCT MANAGFE STOCK--

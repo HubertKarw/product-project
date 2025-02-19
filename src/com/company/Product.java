@@ -5,11 +5,24 @@ import java.util.UUID;
 import java.util.Locale;
 
 
-public abstract class Product {
+public abstract class Product implements Cloneable{
     private UUID id;
     private String name;
     private BigDecimal price;
     private int stock;
+
+    public Product(String name, BigDecimal price, int stock) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
+    public Product(UUID id, String name, BigDecimal price, int stock) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
 
     public UUID getId() {
         return id;
@@ -85,11 +98,11 @@ public abstract class Product {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
-
-    public Product(String name, BigDecimal price, int stock) {
-        this.id = UUID.randomUUID();
-        this.name = name;
-        this.price = price;
-        this.stock = stock;
+    @Override
+    public Product clone() throws CloneNotSupportedException {
+        Product cloned = (Product)super.clone();
+        return cloned;
     }
+
+
 }
