@@ -56,11 +56,12 @@ public class ProductManager {
         try {
             product = findByID(productId);
             //cartProduct = new Product(productId,product.getName(),product.getPrice(),1);
-            cartProduct = product.clone();
-            cartProduct.setStock(quantity);
+//            cartProduct = product.clone();
+//            cartProduct.setStock(quantity);
 
-        } catch (AttributeNotFoundException | CloneNotSupportedException e) {
+        } catch (AttributeNotFoundException e) {
             e.printStackTrace();
+            //throw exception nie ma productu
         }
         //dodanie rpoduktu do cart
         if(!Objects.isNull(product)){
@@ -68,7 +69,12 @@ public class ProductManager {
 //                    .map(Product::getId)
 //                    .filter(id-> id.equals(productId))
 //                    .findFirst().orElseThrow();
-            cart.addToCart(product);
+            if (cart.getProducts().contains(product)){
+                //add quantity to product
+            }else{
+                cart.addToCart(product);
+            }
+
         }
         //uSUNAC PRODUCT Z PRODUCT MANAGFE STOCK--
     }

@@ -99,10 +99,8 @@ public abstract class Product implements Cloneable{
         return result;
     }
     @Override
-    public Product clone() throws CloneNotSupportedException {
-        Product cloned = (Product)super.clone();
-        return cloned;
-    }
+    public abstract Product clone();
+
 
 
 }

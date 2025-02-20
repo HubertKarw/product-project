@@ -36,7 +36,7 @@ public class Cart {
             this.products.add(product);
             product.decreaseStock(1);
         } else {
-            throw new IllegalArgumentException("not enough in stock");
+            throw new IllegalArgumentException("not enough of product"+ product.getId()+ "in stock");
         }
     }
 

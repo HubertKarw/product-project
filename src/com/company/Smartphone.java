@@ -60,4 +60,8 @@ public class Smartphone extends Product {
         sb.append('}');
         return sb.toString();
     }
+    @Override
+    public Smartphone clone(){
+        return new Smartphone(this.getName(),this.getPrice(),this.getStock(),this.colour,this.batteryCapacity, this.accessories);
+    }
 }
