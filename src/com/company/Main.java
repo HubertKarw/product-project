@@ -9,5 +9,7 @@ public class Main {
         Test.processorTest();
         Test.ramTest();
         Test.addingAndRemovingProductsToProductManager();
+        Test.creatingClient();
+        Test.creatingCartAndPrintingInformation();
     }
 }
