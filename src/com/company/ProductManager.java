@@ -3,7 +3,10 @@ package com.company;
 import javax.management.AttributeNotFoundException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class ProductManager {
     private List<Product> products;
@@ -50,52 +53,56 @@ public class ProductManager {
                 .orElseThrow(AttributeNotFoundException::new);
     }
     public void addProductToCart(Cart cart, UUID productId, int quantity){
-        //sprawdzic czy produkt isnieje
-        Product product = null;
-        Product cartProduct = null;
-        try {
-            product = findByID(productId);
-            //cartProduct = new Product(productId,product.getName(),product.getPrice(),1);
-//            cartProduct = product.clone();
-//            cartProduct.setStock(quantity);
-
-        } catch (AttributeNotFoundException e) {
-            e.printStackTrace();
-            //throw exception nie ma productu
-        }
-        //dodanie rpoduktu do cart
-        if(!Objects.isNull(product)){
-//            UUID p =cart.getProducts().stream()
-//                    .map(Product::getId)
-//                    .filter(id-> id.equals(productId))
-//                    .findFirst().orElseThrow();
-            if (cart.getProducts().contains(product)){
-                //add quantity to product
-            }else{
-                cart.addToCart(product);
-            }
-
-        }
-        //uSUNAC PRODUCT Z PRODUCT MANAGFE STOCK--
-    }
-    public void  removeProductFromCart(Cart cart, UUID productId){
         Product product = null;
         try {
             product = findByID(productId);
         } catch (AttributeNotFoundException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException("there is no product with id:"+productId+"in shop");
         }
-        if(!Objects.isNull(product)){
-            cart.removeFromCart(product);
+        Product cartProduct = product.clone();
+        try {
+            cart.addQuantityInCart(this.findInCart(cart, productId),quantity);
+        } catch (AttributeNotFoundException | NullPointerException e) {
+            cart.addToCart(cartProduct,quantity);
         }
-        //sprawdz czy produkt jest w carcie usuńz cart
-
+        product.decreaseStock(quantity);
     }
 
+    public void  removeProductFromCart(Cart cart, UUID productId, int quantity){
+        Product product = null;
+        try {
+            product = findByID(productId);
+        } catch (AttributeNotFoundException e) {
+            throw new IllegalArgumentException("there is no product with id:"+productId+"in shop");
+        }
+        try {
+            cart.removeQuantityInCart(this.findInCart(cart, productId),quantity);
+            product.increaseStock(quantity);
+        } catch (AttributeNotFoundException | NullPointerException e) {
+            throw new IllegalArgumentException("there is no product with id:"+productId+"in cart");
+        }
+
+    }
+    public Product findInCart(Cart cart, UUID productId) throws AttributeNotFoundException {
+        return cart.getProducts().stream()
+                .filter(product -> product.isIdEquals(productId))
+                .limit(1)
+                .findFirst()
+                .orElseThrow(AttributeNotFoundException::new);
+    }
     public void showProducts() {
         List<Product> products = this.getProducts();
         for (Product p : products) {
             System.out.println(p.toString());
         }
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("ProductManager{");
+        sb.append("products=").append(products);
+        sb.append('}');
+        return sb.toString();
+    }
+
 }

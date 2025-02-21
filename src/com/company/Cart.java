@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
@@ -13,6 +14,7 @@ public class Cart {
 
     public Cart(Client client) {
         this.client = client;
+        this.products = new ArrayList<Product>();
     }
 
     public List<Product> getProducts() {
@@ -31,21 +33,29 @@ public class Cart {
         this.client = client;
     }
 
-    public void addToCart(Product product) {
-        if (product.getStock() > 0) {
+    public void addToCart(Product product, int quantity) {
             this.products.add(product);
-            product.decreaseStock(1);
-        } else {
-            throw new IllegalArgumentException("not enough of product"+ product.getId()+ "in stock");
-        }
+            product.increaseStock(quantity);
     }
 
-    public void removeFromCart(Product product) {
-        if (this.products.contains(product)) {
+    public void removeFromCart(Product product, int quantity) {
             this.products.remove(product);
-            product.increaseStock(1);
-        } else {
-            throw new IllegalArgumentException("no such product in cart");
+//            if (product.getStock()>quantity){
+//                throw new IllegalArgumentException("there is not enought of product with id:"+product.getId()+" in cart");
+//            }
+//            product.decreaseStock(quantity);
+    }
+    public void addQuantityInCart(Product product, int quantity){
+        product.increaseStock(quantity);
+    }
+    public void removeQuantityInCart(Product product, int quantity){
+        if (product.getStock()<quantity){
+            throw new IllegalArgumentException("there is not enought of product with id:"+product.getId()+" in cart");
+        }
+        if (product.getStock()==quantity){
+            removeFromCart(product,quantity);
+        }else{
+        product.decreaseStock(quantity);
         }
     }
 

@@ -54,7 +54,7 @@ public abstract class Product implements Cloneable{
 
     public void decreaseStock(int quantity) {
         if (this.getStock() < quantity) {
-            throw new IllegalArgumentException("not enough productys in stock");
+            throw new IllegalArgumentException("not enough products in stock");
         } else {
             this.setStock(this.getStock() - quantity);
         }
