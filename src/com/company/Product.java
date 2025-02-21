@@ -5,7 +5,7 @@ import java.util.UUID;
 import java.util.Locale;
 
 
-public abstract class Product implements Cloneable{
+public abstract class Product implements Cloneable {
     private UUID id;
     private String name;
     private BigDecimal price;
@@ -17,6 +17,7 @@ public abstract class Product implements Cloneable{
         this.price = price;
         this.stock = stock;
     }
+
     public Product(UUID id, String name, BigDecimal price, int stock) {
         this.id = id;
         this.name = name;
@@ -98,9 +99,9 @@ public abstract class Product implements Cloneable{
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
+
     @Override
     public abstract Product clone();
-
 
 
 }

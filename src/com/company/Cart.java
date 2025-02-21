@@ -14,7 +14,7 @@ public class Cart {
 
     public Cart(Client client) {
         this.client = client;
-        this.products = new ArrayList<Product>();
+        this.products = new ArrayList<>();
     }
 
     public List<Product> getProducts() {
@@ -34,28 +34,30 @@ public class Cart {
     }
 
     public void addToCart(Product product, int quantity) {
-            this.products.add(product);
-            product.increaseStock(quantity);
+        this.products.add(product);
+        product.increaseStock(quantity);
     }
 
     public void removeFromCart(Product product, int quantity) {
-            this.products.remove(product);
+        this.products.remove(product);
 //            if (product.getStock()>quantity){
 //                throw new IllegalArgumentException("there is not enought of product with id:"+product.getId()+" in cart");
 //            }
 //            product.decreaseStock(quantity);
     }
-    public void addQuantityInCart(Product product, int quantity){
+
+    public void addQuantityInCart(Product product, int quantity) {
         product.increaseStock(quantity);
     }
-    public void removeQuantityInCart(Product product, int quantity){
-        if (product.getStock()<quantity){
-            throw new IllegalArgumentException("there is not enought of product with id:"+product.getId()+" in cart");
+
+    public void removeQuantityInCart(Product product, int quantity) {
+        if (product.getStock() < quantity) {
+            throw new IllegalArgumentException("there is not enough of product with id:" + product.getId() + " in cart");
         }
-        if (product.getStock()==quantity){
-            removeFromCart(product,quantity);
-        }else{
-        product.decreaseStock(quantity);
+        if (product.getStock() == quantity) {
+            removeFromCart(product, quantity);
+        } else {
+            product.decreaseStock(quantity);
         }
     }
 
