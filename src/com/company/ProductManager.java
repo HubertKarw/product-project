@@ -61,9 +61,9 @@ public class ProductManager {
             throw new IllegalArgumentException("there is no product with id:" + productId + "in shop | cant`t add product to cart");
         }
         Product cartProduct = product.clone();
-        try {//zmiana na if produkt w karcie
+        if(cart.isIdInCart(productId)){
             cart.addQuantityInCart(this.findInCart(cart, productId), quantity);
-        } catch (ProductNotInCartException e) {
+        }else{
             cart.addToCart(cartProduct, quantity);
         }
         product.decreaseStock(quantity);
@@ -76,13 +76,12 @@ public class ProductManager {
         } catch (AttributeNotFoundException e) {
             throw new IllegalArgumentException("there is no product with id:" + productId + "in shop");
         }
-        try {
+        if(cart.isIdInCart(productId)){
             cart.removeQuantityInCart(this.findInCart(cart, productId), quantity);
             product.increaseStock(quantity);
-        } catch (ProductNotInCartException e) {
+        }else{
             throw new IllegalArgumentException("there is no product with id:" + productId + "in cart");
         }
-
     }
 
     public Product findInCart(Cart cart, UUID productId) {

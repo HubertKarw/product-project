@@ -2,6 +2,8 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class Cart {
     private List<Product> products;
@@ -40,10 +42,6 @@ public class Cart {
 
     public void removeFromCart(Product product, int quantity) {
         this.products.remove(product);
-//            if (product.getStock()>quantity){
-//                throw new IllegalArgumentException("there is not enought of product with id:"+product.getId()+" in cart");
-//            }
-//            product.decreaseStock(quantity);
     }
 
     public void addQuantityInCart(Product product, int quantity) {
@@ -59,6 +57,13 @@ public class Cart {
         } else {
             product.decreaseStock(quantity);
         }
+    }
+
+    public boolean isIdInCart(UUID id){
+        return this.getProducts().stream()
+                .map(Product::getId)
+                .collect(Collectors.toList())
+                .contains(id);
     }
 
     @Override
