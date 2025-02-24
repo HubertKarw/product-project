@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -62,6 +63,19 @@ public class Cart {
     public boolean isIdInCart(UUID id) {
         return this.getProducts().stream()
                 .anyMatch(product -> product.getId().equals(id));
+    }
+
+    public void placeOrder() {
+        if (this.getProducts().isEmpty()) {
+            throw new ProductNotInCartException("your order cannot be placed | no products in cart");
+        } else {
+            this.getProducts()
+                    .stream()
+                    .collect(Collectors.toMap(Product::getId, Product::getStock))
+                    .forEach((k, v) -> System.out.println("id: " + k + " stock: " + v));
+            System.out.println("your order has been placed");
+            this.setProducts(Collections.emptyList());
+        }
     }
 
     @Override

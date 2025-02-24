@@ -167,4 +167,15 @@ public class Test {
         }
 
     }
+    public static void orderCart(){
+        Client client = new Client("123", "123");
+        Smartphone s = new Smartphone("samsung", BigDecimal.valueOf(120), 10, "red", 1200);
+        Smartphone s1 = new Smartphone("samsungg", BigDecimal.valueOf(1201), 11, "red", 1200);
+        Cart cart = new Cart(client);
+        List<Product> products = new ArrayList<>(List.of(s, s1));
+        ProductManager pm = new ProductManager(products);
+        pm.addProductToCart(cart, s.getId(), 2);
+        pm.addProductToCart(cart, s1.getId(), 3);
+        cart.placeOrder();
+    }
 }
