@@ -15,8 +15,9 @@ public class Main {
 //        Test.addingAndRemovingProductsToProductManager();
 //        Test.creatingClient();
 //        Test.creatingCartAndPrintingInformation();
-        Test.addAndRemoveItemsToCart();
-        Test.addOverStockToCart();
-        Test.removeMoreItemsFromCart();
+//        Test.addAndRemoveItemsToCart();
+//        Test.addOverStockToCart();
+//        Test.removeMoreItemsFromCart();
+        Test.orderCart();
     }
 }

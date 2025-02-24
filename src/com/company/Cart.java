@@ -71,7 +71,8 @@ public class Cart {
         }else {
             this.getProducts()
                     .stream()
-                    .forEach(this::sellProduct);
+                    .collect(Collectors.toMap(Product::getId, Product::getStock))
+                    .forEach((k,v) -> System.out.println("id: " + k + " stock: " + v));
             System.out.println("your order has been placed");
             this.setProducts(Collections.emptyList());
         }
