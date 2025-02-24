@@ -7,10 +7,10 @@ public class Order {
     private String client;
     private BigDecimal totalPrice;
 
-    public Order(Cart cart){
+    public Order(Cart cart) {
         this.cart = cart;
         this.client = cart.getClientName();
-        this.totalPrice =cart.totalPrice();
+        this.totalPrice = cart.totalPrice();
     }
 
     public Cart getCart() {
