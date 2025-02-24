@@ -5,12 +5,12 @@ import java.math.RoundingMode;
 
 public class Order {
     private Cart cart;
-    private String client;
+    private Client client;
     private BigDecimal totalPrice;
 
     public Order(Cart cart) {
         this.cart = cart;
-        this.client = cart.getClientName();
+        this.client = cart.getClient();
         this.totalPrice = cart.totalPrice();
     }
 
@@ -22,11 +22,11 @@ public class Order {
         this.cart = cart;
     }
 
-    public String getClient() {
+    public Client getClient() {
         return client;
     }
 
-    public void setClient(String client) {
+    public void setClient(Client client) {
         this.client = client;
     }
 
