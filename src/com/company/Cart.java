@@ -65,14 +65,14 @@ public class Cart {
                 .anyMatch(product -> product.getId().equals(id));
     }
 
-    public void placeOrder(){
+    public void placeOrder() {
         if (this.getProducts().isEmpty()) {
             throw new ProductNotInCartException("your order cannot be placed | no products in cart");
-        }else {
+        } else {
             this.getProducts()
                     .stream()
                     .collect(Collectors.toMap(Product::getId, Product::getStock))
-                    .forEach((k,v) -> System.out.println("id: " + k + " stock: " + v));
+                    .forEach((k, v) -> System.out.println("id: " + k + " stock: " + v));
             System.out.println("your order has been placed");
             this.setProducts(Collections.emptyList());
         }
