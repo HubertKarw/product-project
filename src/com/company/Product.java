@@ -1,16 +1,35 @@
 package com.company;
 
-public abstract class Product {
-    private int id;
+import java.math.BigDecimal;
+import java.util.UUID;
+import java.util.Locale;
+
+
+public abstract class Product implements Cloneable {
+    private UUID id;
     private String name;
-    private double price;
+    private BigDecimal price;
     private int stock;
 
-    public int getId() {
+    public Product(String name, BigDecimal price, int stock) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
+
+    public Product(UUID id, String name, BigDecimal price, int stock) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
+
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -22,11 +41,11 @@ public abstract class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -34,8 +53,28 @@ public abstract class Product {
         return stock;
     }
 
+    public void decreaseStock(int quantity) {
+        if (this.getStock() < quantity) {
+            throw new IllegalArgumentException("not enough products in stock");
+        } else {
+            this.setStock(this.getStock() - quantity);
+        }
+    }
+
+    public void increaseStock(int quantity) {
+        this.setStock(this.getStock() + quantity);
+    }
+
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public boolean isNameEquals(String name) {
+        return name.toUpperCase(Locale.ROOT).equals(this.getName().toUpperCase(Locale.ROOT));
+    }
+
+    public boolean isIdEquals(UUID id) {
+        return id == this.getId();
     }
 
     @Override
@@ -46,7 +85,7 @@ public abstract class Product {
         Product product = (Product) o;
 
         if (getId() != product.getId()) return false;
-        if (Double.compare(product.getPrice(), getPrice()) != 0) return false;
+        if ((product.getPrice().compareTo(getPrice())) != 0) return false;
         return getName().equals(product.getName());
     }
 
@@ -54,17 +93,15 @@ public abstract class Product {
     public int hashCode() {
         int result;
         long temp;
-        result = getId();
+        result = getId().version();
         result = 31 * result + getName().hashCode();
-        temp = Double.doubleToLongBits(getPrice());
+        temp = getPrice().byteValue();
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
-    public Product(int id, String name, double price, int stock) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.stock = stock;
-    }
+    @Override
+    public abstract Product clone();
+
+
 }
