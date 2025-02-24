@@ -85,11 +85,11 @@ public class Test {
         Product computer1 = new Computer("Dell", BigDecimal.valueOf(120), 100, processor, ram);
         Product computer2 = new Computer("Dell", BigDecimal.valueOf(120), 100);
         Product computer3 = new Computer("Dell", BigDecimal.valueOf(120), 100);
-        Product electronics = new Electronics( "cable", BigDecimal.valueOf(120), 1);
+        Product electronics = new Electronics("cable", BigDecimal.valueOf(120), 1);
         List<Electronics> accessories1 = new ArrayList<>();
         accessories1.add((Electronics) electronics);
-        Product smartphone1 = new Smartphone( "samsung", BigDecimal.valueOf(120), 10, "red", 1200);
-        Product smartphone2 = new Smartphone( "samsung", BigDecimal.valueOf(120), 10, "red", 1200, accessories1);
+        Product smartphone1 = new Smartphone("samsung", BigDecimal.valueOf(120), 10, "red", 1200);
+        Product smartphone2 = new Smartphone("samsung", BigDecimal.valueOf(120), 10, "red", 1200, accessories1);
         Client client = new Client("123", "222");
         List<Product> products = new ArrayList<>();
         products.addAll(List.of(computer1, computer2, computer3, electronics, smartphone1));
@@ -97,8 +97,74 @@ public class Test {
         System.out.println(cart);
     }
 
-    public static void creatingClient(){
+    public static void creatingClient() {
         Client client1 = new Client("username", "address");
         System.out.println(client1);
+    }
+
+    public static void addAndRemoveItemsToCart() {
+        Client client = new Client("123", "123");
+        Smartphone s = new Smartphone("samsung", BigDecimal.valueOf(120), 10, "red", 1200);
+        Smartphone s1 = new Smartphone("samsungg", BigDecimal.valueOf(1201), 11, "red", 1200);
+        Cart cart = new Cart(client);
+        List<Product> products = new ArrayList<>(List.of(s, s1));
+        ProductManager pm = new ProductManager(products);
+        pm.addProductToCart(cart, s.getId(), 1);
+        System.out.println(cart);
+        System.out.println(pm);
+        pm.addProductToCart(cart, s.getId(), 1);
+        System.out.println(cart);
+        System.out.println(pm);
+        pm.removeProductFromCart(cart, s.getId(), 1);
+        System.out.println(cart);
+        System.out.println(pm);
+        pm.removeProductFromCart(cart, s.getId(), 1);
+        System.out.println(cart);
+        System.out.println(pm);
+    }
+
+    public static void removeMoreItemsFromCart() {
+        try {
+            Client client = new Client("123", "123");
+            Smartphone s = new Smartphone("samsung", BigDecimal.valueOf(120), 10, "red", 1200);
+            Smartphone s1 = new Smartphone("samsungg", BigDecimal.valueOf(1201), 11, "red", 1200);
+            Cart cart = new Cart(client);
+            List<Product> products = new ArrayList<>(List.of(s, s1));
+            ProductManager pm = new ProductManager(products);
+            pm.addProductToCart(cart, s.getId(), 1);
+            System.out.println(cart);
+            System.out.println(pm);
+            pm.addProductToCart(cart, s.getId(), 1);
+            System.out.println(cart);
+            System.out.println(pm);
+            pm.removeProductFromCart(cart, s.getId(), 1);
+            System.out.println(cart);
+            System.out.println(pm);
+            pm.removeProductFromCart(cart, s.getId(), 1);
+            System.out.println(cart);
+            System.out.println(pm);
+            pm.removeProductFromCart(cart, s.getId(), 1);
+            System.out.println(cart);
+            System.out.println(pm);
+        } catch (Exception e) {
+            System.out.println("exception was thrown");
+        }
+    }
+
+    public static void addOverStockToCart() {
+        try {
+            Client client = new Client("123", "123");
+            Smartphone s = new Smartphone("samsung", BigDecimal.valueOf(120), 10, "red", 1200);
+            Smartphone s1 = new Smartphone("samsungg", BigDecimal.valueOf(1201), 11, "red", 1200);
+            Cart cart = new Cart(client);
+            List<Product> products = new ArrayList<>(List.of(s, s1));
+            ProductManager pm = new ProductManager(products);
+            pm.addProductToCart(cart, s.getId(), 12);
+            System.out.println(cart);
+            System.out.println(pm);
+        } catch (Exception e) {
+            System.out.println("Exception caughts");
+        }
+
     }
 }

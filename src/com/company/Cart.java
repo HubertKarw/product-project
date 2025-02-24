@@ -59,11 +59,9 @@ public class Cart {
         }
     }
 
-    public boolean isIdInCart(UUID id){
+    public boolean isIdInCart(UUID id) {
         return this.getProducts().stream()
-                .map(Product::getId)
-                .collect(Collectors.toList())
-                .contains(id);
+                .anyMatch(product -> product.getId().equals(id));
     }
 
     @Override
