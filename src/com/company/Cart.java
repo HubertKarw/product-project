@@ -67,7 +67,7 @@ public class Cart {
 
     public void placeOrder(){
         if (this.getProducts().isEmpty()) {
-            System.out.println("your cart is empty");
+            throw new ProductNotInCartException("your order cannot be placed | no products in cart");
         }else {
             this.getProducts()
                     .stream()
