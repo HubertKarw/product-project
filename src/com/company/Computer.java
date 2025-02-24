@@ -1,6 +1,7 @@
 package com.company;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class Computer extends Product {
     private Processor processor;
@@ -8,6 +9,17 @@ public class Computer extends Product {
 
     public Computer(String name, BigDecimal price, int stock) {
         super(name, price, stock);
+    }
+
+    @Override
+    public Product clone() {
+        return new Computer(this.getId(),this.getName(),this.getPrice(),0,this.processor,this.ram);
+    }
+
+    public Computer(UUID id, String name, BigDecimal price, int stock, Processor processor, RandomAccessMemory ram) {
+        super(id, name, price, stock);
+        this.processor = processor;
+        this.ram = ram;
     }
 
     public Computer(String name, BigDecimal price, int stock, Processor processor, RandomAccessMemory ram) {

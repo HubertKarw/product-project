@@ -3,11 +3,19 @@ package com.company;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Smartphone extends Product {
     private String colour;
     private int batteryCapacity;
     private List<Electronics> accessories;
+
+    public Smartphone(UUID id, String name, BigDecimal price, int stock, String colour, int batteryCapacity, List<Electronics> accessories) {
+        super(id, name, price, stock);
+        this.colour = colour;
+        this.batteryCapacity = batteryCapacity;
+        this.accessories = accessories;
+    }
 
     public Smartphone(String name, BigDecimal price, int stock, String colour, int batteryCapacity, List<Electronics> accessories) {
         super(name, price, stock);
@@ -59,5 +67,10 @@ public class Smartphone extends Product {
         sb.append(", accessories=").append(accessories.toString());
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public Smartphone clone() {
+        return new Smartphone(this.getId(), this.getName(), this.getPrice(), 0, this.colour, this.batteryCapacity, this.accessories);
     }
 }
