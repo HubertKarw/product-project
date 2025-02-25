@@ -1,9 +1,19 @@
 package com.company;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class Electronics extends Product {
-    public Electronics(int id, String name, BigDecimal price, int stock) {
+    public Electronics(String name, BigDecimal price, int stock) {
+        super(name, price, stock);
+    }
+
+    @Override
+    public Product clone() {
+        return new Electronics(this.getId(), this.getName(), this.getPrice(), 0);
+    }
+
+    public Electronics(UUID id, String name, BigDecimal price, int stock) {
         super(id, name, price, stock);
     }
 

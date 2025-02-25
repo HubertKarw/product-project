@@ -1,30 +1,46 @@
 package com.company;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class Computer extends Product {
-    private String processor;
-    private int ram;
+    private Processor processor;
+    private RandomAccessMemory ram;
 
-    public Computer(int id, String name, BigDecimal price, int stock) {
-        super(id, name, price, stock);
+    public Computer(String name, BigDecimal price, int stock) {
+        super(name, price, stock);
     }
 
-    public String getProcessor() {
+    @Override
+    public Product clone() {
+        return new Computer(this.getId(),this.getName(),this.getPrice(),0,this.processor,this.ram);
+    }
+
+    public Computer(UUID id, String name, BigDecimal price, int stock, Processor processor, RandomAccessMemory ram) {
+        super(id, name, price, stock);
+        this.processor = processor;
+        this.ram = ram;
+    }
+
+    public Computer(String name, BigDecimal price, int stock, Processor processor, RandomAccessMemory ram) {
+        super(name, price, stock);
+        this.processor = processor;
+        this.ram = ram;
+    }
+
+    public Processor getProcessor() {
         return processor;
     }
 
-    public void setProcessor(String processor) {
+    public void setProcessor(Processor processor) {
         this.processor = processor;
     }
 
-
-
-    public int getRam() {
+    public RandomAccessMemory getRam() {
         return ram;
     }
 
-    public void setRam(int ram) {
+    public void setRam(RandomAccessMemory ram) {
         this.ram = ram;
     }
 
