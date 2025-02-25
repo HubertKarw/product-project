@@ -12,7 +12,7 @@ public class OrderProcessor {
 
     public static String createReceipt(Order orderToProcess) {
         BigDecimal total = orderToProcess.getTotalPrice();
-        String clientName = orderToProcess.getClient();
+        String clientName = orderToProcess.getClient().getUsername();
         Cart cart = orderToProcess.getCart();
         StringBuilder sb = new StringBuilder("Client: '");
         sb.append(clientName).append("\'\n");

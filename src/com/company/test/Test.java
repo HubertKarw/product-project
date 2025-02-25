@@ -182,10 +182,10 @@ public class Test {
     }
 
     public static void testTask5() {
-        Product computer1 = new Computer(1, "Dell", BigDecimal.valueOf(123), 100);
-        Product computer2 = new Computer(3, "Lenovo", BigDecimal.valueOf(122), 90);
-        Product computer3 = new Computer(2, "MacBook", BigDecimal.valueOf(500), 20);
-        String client = "client1";
+        Product computer1 = new Computer( "Dell", BigDecimal.valueOf(123), 100);
+        Product computer2 = new Computer( "Lenovo", BigDecimal.valueOf(122), 90);
+        Product computer3 = new Computer( "MacBook", BigDecimal.valueOf(500), 20);
+        Client client = new Client("123", "123");
         List<Product> products = new ArrayList<>();
         products.addAll(List.of(computer1, computer2, computer3));
         Cart cart = new Cart(products, client);
@@ -193,10 +193,10 @@ public class Test {
         System.out.println(order);
     }
     public static void testTask6(){
-        Product computer1 = new Computer(1, "Dell", BigDecimal.valueOf(123), 100);
-        Product computer2 = new Computer(3, "Lenovo", BigDecimal.valueOf(122), 90);
-        Product computer3 = new Computer(2, "MacBook", BigDecimal.valueOf(500), 20);
-        String client = "client1";
+        Product computer1 = new Computer( "Dell", BigDecimal.valueOf(123), 100);
+        Product computer2 = new Computer( "Lenovo", BigDecimal.valueOf(122), 90);
+        Product computer3 = new Computer( "MacBook", BigDecimal.valueOf(500), 20);
+        Client client = new Client("123", "123");
         List<Product> products = new ArrayList<>();
         products.addAll(List.of(computer1, computer2, computer3));
         Cart cart = new Cart(products, client);
