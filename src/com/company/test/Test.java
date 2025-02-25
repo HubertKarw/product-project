@@ -177,5 +177,7 @@ public class Test {
         pm.addProductToCart(cart, s.getId(), 2);
         pm.addProductToCart(cart, s1.getId(), 3);
         cart.placeOrder();
+        System.out.println(cart);
+        System.out.println(products);
     }
 }
