@@ -39,7 +39,7 @@ public class Order {
     }
 
     public void applyDiscount(BigDecimal discount) {
-        if (discount.compareTo(BigDecimal.ONE)<0){
+        if (discount.compareTo(BigDecimal.ONE) < 0) {
             throw new IllegalArgumentException("Discount cannot be more than 100%");
         }
         this.totalPrice = this.totalPrice.multiply(BigDecimal.ONE.subtract(discount)).setScale(2, RoundingMode.HALF_UP);

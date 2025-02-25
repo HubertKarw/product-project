@@ -79,12 +79,13 @@ public class Cart {
             this.setProducts(Collections.emptyList());
         }
     }
-    public BigDecimal totalPrice(){
-       return this.getProducts()
-               .stream()
-               .map(Product::getPrice)
-               .reduce(BigDecimal.ZERO, BigDecimal::add)
-               .setScale(2, RoundingMode.HALF_UP);
+
+    public BigDecimal totalPrice() {
+        return this.getProducts()
+                .stream()
+                .map(Product::getPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .setScale(2, RoundingMode.HALF_UP);
     }
 
     @Override
