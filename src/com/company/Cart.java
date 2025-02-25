@@ -1,7 +1,9 @@
 package com.company;
 
+
 import java.util.ArrayList;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Collections;
 import java.util.UUID;
@@ -78,11 +80,13 @@ public class Cart {
             this.setProducts(Collections.emptyList());
         }
     }
-    public BigDecimal totalPrice(){
-       return this.getProducts()
-               .stream()
-               .map(Product::getPrice)
-               .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+    public BigDecimal totalPrice() {
+        return this.getProducts()
+                .stream()
+                .map(Product::getPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .setScale(2, RoundingMode.HALF_UP);
     }
 
     @Override

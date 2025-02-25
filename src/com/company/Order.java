@@ -1,6 +1,7 @@
 package com.company;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Order {
     private Cart cart;
@@ -35,6 +36,13 @@ public class Order {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public void applyDiscount(BigDecimal discount) {
+        if (discount.compareTo(BigDecimal.ONE) < 0) {
+            throw new IllegalArgumentException("Discount cannot be more than 100%");
+        }
+        this.totalPrice = this.totalPrice.multiply(BigDecimal.ONE.subtract(discount)).setScale(2, RoundingMode.HALF_UP);
     }
 
     @Override
