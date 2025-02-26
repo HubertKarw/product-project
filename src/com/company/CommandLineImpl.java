@@ -22,10 +22,12 @@ public class CommandLineImpl implements CommandLine {
         System.out.println(order);
     }
 
+    @Override
     public Order createOrder(Cart cart){
         System.out.println("Creating order form cart:\n "+ cart);
         return new Order(cart);
     }
+    @Override
     public void processOrder(Order order){
         System.out.println("Processing Order");
         OrderProcessor.process(order);

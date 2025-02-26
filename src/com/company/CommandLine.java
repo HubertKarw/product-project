@@ -7,7 +7,11 @@ public interface CommandLine {
 
     void printOrder(Order order);
 
-    void addToCart(ProductManager pm, Cart cart, Product product,int quantity);
+    Order createOrder(Cart cart);
 
-    void removeFromCart(ProductManager pm, Cart cart, Product product,int quantity);
+    void processOrder(Order order);
+
+    void addToCart(ProductManager pm, Cart cart, Product product, int quantity);
+
+    void removeFromCart(ProductManager pm, Cart cart, Product product, int quantity);
 }
