@@ -9,6 +9,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+
 //        Test.creatingAndCheckingCorrectDisplayOfAllProducts();
 //        Test.processorTest();
 //        Test.ramTest();
@@ -18,6 +19,7 @@ public class Main {
 //        Test.addAndRemoveItemsToCart();
 //        Test.addOverStockToCart();
 //        Test.removeMoreItemsFromCart();
-        Test.orderCart();
+//        Test.orderCart();
+        Test.processingOrder();
     }
 }
