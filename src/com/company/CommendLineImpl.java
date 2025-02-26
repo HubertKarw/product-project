@@ -1,6 +1,6 @@
 package com.company;
 
-public class CommendLineImpl implements CommandLine{
+public class CommendLineImpl implements CommandLine {
     @Override
     public void printCart(Cart cart) {
         System.out.println(cart);
@@ -17,10 +17,14 @@ public class CommendLineImpl implements CommandLine{
     }
 
     @Override
-    public void addToCart(ProductManager pm, Cart cart, Product product) {
+    public void addToCart(ProductManager pm, Cart cart, Product product, int quantity) {
+        pm.addProductToCart(cart, product.getId(), quantity);
+        System.out.println("added product with id: "+product.getId()+" to cart");
     }
 
     @Override
-    public void removeFromCart(ProductManager pm, Cart cart, Product product) {
+    public void removeFromCart(ProductManager pm, Cart cart, Product product, int quantity) {
+        pm.removeProductFromCart(cart, product.getId(), quantity);
+        System.out.println("removed product with id: "+product.getId()+" to cart");
     }
 }

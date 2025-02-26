@@ -7,7 +7,7 @@ public interface CommandLine {
 
     void printOrder(Order order);
 
-    void addToCart(ProductManager pm, Cart cart, Product product);
+    void addToCart(ProductManager pm, Cart cart, Product product,int quantity);
 
-    void removeFromCart(ProductManager pm, Cart cart, Product product);
+    void removeFromCart(ProductManager pm, Cart cart, Product product,int quantity);
 }
