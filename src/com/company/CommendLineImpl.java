@@ -17,12 +17,10 @@ public class CommendLineImpl implements CommandLine{
     }
 
     @Override
-    public void addToCart(Cart cart, Product product) {
-
+    public void addToCart(ProductManager pm, Cart cart, Product product) {
     }
 
     @Override
-    public void removeFromCart(Cart cart, Product product) {
-
+    public void removeFromCart(ProductManager pm, Cart cart, Product product) {
     }
 }
