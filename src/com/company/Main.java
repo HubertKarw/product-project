@@ -20,6 +20,7 @@ public class Main {
 //        Test.addOverStockToCart();
 //        Test.removeMoreItemsFromCart();
 //        Test.orderCart();
-        Test.processingOrder();
+//        Test.processingOrder();
+        Test.commandLineImplementationTesting();
     }
 }

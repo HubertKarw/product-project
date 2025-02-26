@@ -72,10 +72,10 @@ public class Cart {
         if (this.getProducts().isEmpty()) {
             throw new ProductNotInCartException("your order cannot be placed | no products in cart");
         } else {
-            this.getProducts()
-                    .stream()
-                    .collect(Collectors.toMap(Product::getId, Product::getStock))
-                    .forEach((k, v) -> System.out.println("id: " + k + " stock: " + v));
+//            this.getProducts()
+//                    .stream()
+//                    .collect(Collectors.toMap(Product::getId, Product::getStock))
+//                    .forEach((k, v) -> System.out.println("id: " + k + " stock: " + v));
             System.out.println("your order has been placed");
             this.setProducts(new ArrayList<Product>());
         }
@@ -84,7 +84,7 @@ public class Cart {
     public BigDecimal totalPrice() {
         return this.getProducts()
                 .stream()
-                .map(Product::getPrice)
+                .map(product -> product.getPrice().multiply(BigDecimal.valueOf(product.getStock())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .setScale(2, RoundingMode.HALF_UP);
     }

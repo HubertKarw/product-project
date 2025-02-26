@@ -215,4 +215,28 @@ public class Test {
         System.out.println(cart);
 
     }
+    public static void commandLineImplementationTesting(){
+        Product computer1 = new Computer("Dell", BigDecimal.valueOf(123), 100);
+        Product computer2 = new Computer("Lenovo", BigDecimal.valueOf(122), 90);
+        Product computer3 = new Computer("MacBook", BigDecimal.valueOf(500), 20);
+        Client client = new Client("123", "123");
+        List<Product> products = new ArrayList<>();
+        products.addAll(List.of(computer1, computer2, computer3));
+        ProductManager pm = new ProductManager(products);
+        Cart cart = new Cart(client);
+        CommandLineImpl cml = new CommandLineImpl();
+        cml.printCart(cart);
+        cml.addToCart(pm,cart,computer1,12);
+        cml.printCart(cart);
+        cml.removeFromCart(pm,cart,computer1,2);
+        cml.printCart(cart);
+        Order order = cml.createOrder(cart);
+        cml.printOrder(order);
+        cml.printProducts(pm);
+        cml.processOrder(order);
+        cml.printCart(cart);
+        cml.printOrder(order);
+        cml.printProducts(pm);
+
+    }
 }
