@@ -1,16 +1,17 @@
 package com.company;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Order {
     private Cart cart;
-    private String client;
+    private Client client;
     private BigDecimal totalPrice;
 
-    public Order(Cart cart){
+    public Order(Cart cart) {
         this.cart = cart;
-        this.client = cart.getClientName();
-        this.totalPrice =cart.totalPrice();
+        this.client = cart.getClient();
+        this.totalPrice = cart.totalPrice();
     }
 
     public Cart getCart() {
@@ -21,11 +22,11 @@ public class Order {
         this.cart = cart;
     }
 
-    public String getClient() {
+    public Client getClient() {
         return client;
     }
 
-    public void setClient(String client) {
+    public void setClient(Client client) {
         this.client = client;
     }
 
@@ -35,6 +36,13 @@ public class Order {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public void applyDiscount(BigDecimal discount) {
+        if (discount.compareTo(BigDecimal.ONE) < 0) {
+            throw new IllegalArgumentException("Discount cannot be more than 100%");
+        }
+        this.totalPrice = this.totalPrice.multiply(BigDecimal.ONE.subtract(discount)).setScale(2, RoundingMode.HALF_UP);
     }
 
     @Override
