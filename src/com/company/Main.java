@@ -19,7 +19,7 @@ public class Main {
 //        Test.addAndRemoveItemsToCart();
 //        Test.addOverStockToCart();
 //        Test.removeMoreItemsFromCart();
-        Test.orderCart();
-        Test.testTask6();
+//        Test.orderCart();
+        Test.processingOrder();
     }
 }

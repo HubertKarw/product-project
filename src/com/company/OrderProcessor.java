@@ -4,11 +4,6 @@ import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
 public class OrderProcessor {
-    private Order orderToProcess;
-
-    public OrderProcessor(Order order) {
-        this.orderToProcess = order;
-    }
 
     public static String createReceipt(Order orderToProcess) {
         BigDecimal total = orderToProcess.getTotalPrice();

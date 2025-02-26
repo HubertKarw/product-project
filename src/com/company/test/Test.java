@@ -167,7 +167,8 @@ public class Test {
         }
 
     }
-    public static void orderCart(){
+
+    public static void orderCart() {
         Client client = new Client("123", "123");
         Smartphone s = new Smartphone("samsung", BigDecimal.valueOf(120), 10, "red", 1200);
         Smartphone s1 = new Smartphone("samsungg", BigDecimal.valueOf(1201), 11, "red", 1200);
@@ -181,10 +182,10 @@ public class Test {
         System.out.println(products);
     }
 
-    public static void testTask5() {
-        Product computer1 = new Computer( "Dell", BigDecimal.valueOf(123), 100);
-        Product computer2 = new Computer( "Lenovo", BigDecimal.valueOf(122), 90);
-        Product computer3 = new Computer( "MacBook", BigDecimal.valueOf(500), 20);
+    public static void creatingOrder() {
+        Product computer1 = new Computer("Dell", BigDecimal.valueOf(123), 100);
+        Product computer2 = new Computer("Lenovo", BigDecimal.valueOf(122), 90);
+        Product computer3 = new Computer("MacBook", BigDecimal.valueOf(500), 20);
         Client client = new Client("123", "123");
         List<Product> products = new ArrayList<>();
         products.addAll(List.of(computer1, computer2, computer3));
@@ -192,18 +193,26 @@ public class Test {
         Order order = new Order(cart);
         System.out.println(order);
     }
-    public static void testTask6(){
-        Product computer1 = new Computer( "Dell", BigDecimal.valueOf(123), 100);
-        Product computer2 = new Computer( "Lenovo", BigDecimal.valueOf(122), 90);
-        Product computer3 = new Computer( "MacBook", BigDecimal.valueOf(500), 20);
+
+    public static void processingOrder() {
+        Product computer1 = new Computer("Dell", BigDecimal.valueOf(123), 100);
+        Product computer2 = new Computer("Lenovo", BigDecimal.valueOf(122), 90);
+        Product computer3 = new Computer("MacBook", BigDecimal.valueOf(500), 20);
         Client client = new Client("123", "123");
         List<Product> products = new ArrayList<>();
         products.addAll(List.of(computer1, computer2, computer3));
-        Cart cart = new Cart(products, client);
+        ProductManager pm = new ProductManager(products);
+        Cart cart = new Cart(client);
+        pm.addProductToCart(cart, computer2.getId(), 10);
+        pm.addProductToCart(cart, computer2.getId(), 10);
+        pm.addProductToCart(cart, computer1.getId(), 10);
         Order order = new Order(cart);
         System.out.println(order);
 //        OrderProcessor processor = new OrderProcessor(order);
-       OrderProcessor.process(order);
+        OrderProcessor.process(order);
+        System.out.println(computer1);
+        System.out.println(computer2);
+        System.out.println(cart);
 
     }
 }
