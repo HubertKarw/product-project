@@ -224,11 +224,13 @@ public class Test {
         products.addAll(List.of(computer1, computer2, computer3));
         ProductManager pm = new ProductManager(products);
         Cart cart = new Cart(client);
+//        pm.addProductToCart(cart,computer1.getId(),1);
         CommandLineImpl cml = new CommandLineImpl();
         cml.printCart(cart);
-        cml.addToCart(pm,cart,computer1,12);
+        cml.printProducts(pm);
+        cml.addToCart(pm,cart);
         cml.printCart(cart);
-        cml.removeFromCart(pm,cart,computer1,2);
+        cml.removeFromCart(pm,cart);
         cml.printCart(cart);
         Order order = cml.createOrder(cart);
         cml.printOrder(order);

@@ -1,8 +1,9 @@
 package com.company;
 
+import java.util.Scanner;
+import java.util.UUID;
+
 public class CommandLineImpl implements CommandLine {
-    public CommandLineImpl() {
-    }
 
     @Override
     public void printCart(Cart cart) {
@@ -33,14 +34,40 @@ public class CommandLineImpl implements CommandLine {
         OrderProcessor.process(order);
     }
     @Override
-    public void addToCart(ProductManager pm, Cart cart, Product product, int quantity) {
-        pm.addProductToCart(cart, product.getId(), quantity);
-        System.out.println("added product with id: "+product.getId()+" to cart");
+    public void addToCart(ProductManager pm, Cart cart) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Give product ID you want to add to cart");
+        String id = scanner.nextLine();
+        System.out.println("Give product quantity you want to add to cart");
+        String quant = scanner.nextLine();
+        int quantity = 0;
+        try {
+            quantity = Integer.parseInt(quant);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        UUID uuid = UUID.fromString(id);
+        System.out.println(uuid.equals(pm.getProducts().get(0).getId()));
+        pm.addProductToCart(cart, (UUID)UUID.fromString(id), quantity);
+        System.out.println("added product with id: "+quant+" to cart");
+        scanner.close();
     }
 
     @Override
-    public void removeFromCart(ProductManager pm, Cart cart, Product product, int quantity) {
-        pm.removeProductFromCart(cart, product.getId(), quantity);
-        System.out.println("removed product with id: "+product.getId()+" from cart");
+    public void removeFromCart(ProductManager pm, Cart cart) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Give product ID you want to add to cart");
+        String id = scanner.nextLine();
+        System.out.println("Give product quantity you want to add to cart");
+        String quant = scanner.nextLine();
+        int quantity = 0;
+        try {
+            quantity = Integer.parseInt(quant);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        pm.removeProductFromCart(cart, UUID.fromString(id), quantity);
+        System.out.println("removed product with id: "+id+" from cart");
+        scanner.close();
     }
 }

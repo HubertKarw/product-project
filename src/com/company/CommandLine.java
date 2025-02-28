@@ -11,7 +11,7 @@ public interface CommandLine {
 
     void processOrder(Order order);
 
-    void addToCart(ProductManager pm, Cart cart, Product product, int quantity);
+    void addToCart(ProductManager pm, Cart cart);
 
-    void removeFromCart(ProductManager pm, Cart cart, Product product, int quantity);
+    void removeFromCart(ProductManager pm, Cart cart);
 }
