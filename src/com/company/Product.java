@@ -55,7 +55,7 @@ public abstract class Product implements Cloneable {
 
     public void decreaseStock(int quantity) {
         if (this.getStock() < quantity) {
-            throw new IllegalArgumentException("not enough products in stock");
+            throw new ProductNotInShopException("not enough products in stock");
         } else {
             this.setStock(this.getStock() - quantity);
         }
@@ -74,7 +74,7 @@ public abstract class Product implements Cloneable {
     }
 
     public boolean isIdEquals(UUID id) {
-        return id == this.getId();
+        return id.equals(this.getId());
     }
 
     @Override

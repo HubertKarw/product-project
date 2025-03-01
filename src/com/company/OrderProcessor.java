@@ -1,6 +1,8 @@
 package com.company;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 
 public class OrderProcessor {
@@ -11,18 +13,22 @@ public class OrderProcessor {
         Cart cart = orderToProcess.getCart();
         StringBuilder sb = new StringBuilder("Client: '");
         sb.append(clientName).append("\'\n");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        sb.append("Order date: ").append(orderToProcess.getOrderDate().format(formatter)).append("\n");
         sb.append("items:").append("\n");
         sb.append(cart
                 .getProducts()
                 .stream()
-                .map(product -> (product.getId() + " " + product.getName() + "\t\t\t" + product.getPrice().toPlainString() + "pln"))
+                .map(product -> (product.getId() + " " + product.getName() + "\t\t\t" + product.getPrice().multiply(BigDecimal.valueOf(product.getStock())).toPlainString() + "pln"))
                 .collect(Collectors.joining("\n")));
         sb.append("\nTotal Price: ").append(total.toPlainString()).append("pln");
         return sb.toString();
     }
 
     public static void process(Order orderToProcess) {
+        orderToProcess.markOrderAsProcessed();
         System.out.println(createReceipt(orderToProcess));
         orderToProcess.getCart().placeOrder();
+        orderToProcess.setTotalPrice(BigDecimal.ZERO);
     }
 }
