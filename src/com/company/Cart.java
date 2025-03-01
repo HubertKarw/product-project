@@ -54,7 +54,7 @@ public class Cart {
 
     public void removeQuantityInCart(Product product, int quantity) {
         if (product.getStock() < quantity) {
-            throw new IllegalArgumentException("there is not enough of product with id:" + product.getId() + " in cart");
+            throw new ProductNotInCartException("there is not enough of product with id:" + product.getId() + " in cart");
         }
         if (product.getStock() == quantity) {
             removeFromCart(product, quantity);
