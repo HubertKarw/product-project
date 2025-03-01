@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class CommandLineImpl implements CommandLine {
-
+    Scanner scanner = new Scanner(System.in);
     @Override
     public void printCart(Cart cart) {
         System.out.println("Cart:");
@@ -35,7 +35,7 @@ public class CommandLineImpl implements CommandLine {
     }
     @Override
     public void addToCart(ProductManager pm, Cart cart) {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
         System.out.println("Give product ID you want to add to cart");
         String id = scanner.nextLine();
         System.out.println("Give product quantity you want to add to cart");
@@ -46,8 +46,6 @@ public class CommandLineImpl implements CommandLine {
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        UUID uuid = UUID.fromString(id);
-        System.out.println(uuid.equals(pm.getProducts().get(0).getId()));
         pm.addProductToCart(cart, (UUID)UUID.fromString(id), quantity);
         System.out.println("added product with id: "+quant+" to cart");
         scanner.close();
@@ -55,10 +53,10 @@ public class CommandLineImpl implements CommandLine {
 
     @Override
     public void removeFromCart(ProductManager pm, Cart cart) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Give product ID you want to add to cart");
+//        Scanner scanner = new Scanner(System.in);
+        System.out.println("Give product ID you want to remove from cart");
         String id = scanner.nextLine();
-        System.out.println("Give product quantity you want to add to cart");
+        System.out.println("Give product quantity you want to remove from cart");
         String quant = scanner.nextLine();
         int quantity = 0;
         try {
@@ -68,6 +66,6 @@ public class CommandLineImpl implements CommandLine {
         }
         pm.removeProductFromCart(cart, UUID.fromString(id), quantity);
         System.out.println("removed product with id: "+id+" from cart");
-        scanner.close();
+//        scanner.close();
     }
 }
