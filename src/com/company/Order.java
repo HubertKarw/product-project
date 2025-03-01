@@ -55,9 +55,11 @@ public class Order {
     public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
     }
-    public void markOrderAsProcessed(){
-        this.orderDate=LocalDateTime.now();
+
+    public void markOrderAsProcessed() {
+        this.orderDate = LocalDateTime.now();
     }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Order{");
