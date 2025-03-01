@@ -15,7 +15,7 @@ public class OrderProcessor {
         sb.append(cart
                 .getProducts()
                 .stream()
-                .map(product -> (product.getId() + " " + product.getName() + "\t\t\t" + product.getPrice().toPlainString() + "pln"))
+                .map(product -> (product.getId() + " " + product.getName() + "\t\t\t" + product.getPrice().multiply(BigDecimal.valueOf(product.getStock())).toPlainString() + "pln"))
                 .collect(Collectors.joining("\n")));
         sb.append("\nTotal Price: ").append(total.toPlainString()).append("pln");
         return sb.toString();
@@ -24,5 +24,6 @@ public class OrderProcessor {
     public static void process(Order orderToProcess) {
         System.out.println(createReceipt(orderToProcess));
         orderToProcess.getCart().placeOrder();
+        orderToProcess.setTotalPrice(BigDecimal.ZERO);
     }
 }
