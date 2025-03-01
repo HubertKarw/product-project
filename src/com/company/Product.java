@@ -74,7 +74,7 @@ public abstract class Product implements Cloneable {
     }
 
     public boolean isIdEquals(UUID id) {
-        return id == this.getId();
+        return id.equals(this.getId());
     }
 
     @Override

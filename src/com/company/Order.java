@@ -2,16 +2,19 @@ package com.company;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDateTime;
 
 public class Order {
     private Cart cart;
     private Client client;
     private BigDecimal totalPrice;
+    private LocalDateTime orderDate;
 
     public Order(Cart cart) {
         this.cart = cart;
         this.client = cart.getClient();
         this.totalPrice = cart.totalPrice();
+        this.orderDate = null;
     }
 
     public Cart getCart() {
@@ -43,6 +46,18 @@ public class Order {
             throw new IllegalArgumentException("Discount cannot be more than 100%");
         }
         this.totalPrice = this.totalPrice.multiply(BigDecimal.ONE.subtract(discount)).setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public void markOrderAsProcessed() {
+        this.orderDate = LocalDateTime.now();
     }
 
     @Override
