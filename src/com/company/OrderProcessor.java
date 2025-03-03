@@ -39,22 +39,24 @@ public class OrderProcessor {
         orderToProcess.getCart().placeOrder();
         orderToProcess.setTotalPrice(BigDecimal.ZERO);
     }
-    public static void createFile(){
-        try{
-            if (file.createNewFile()){
+
+    public static void createFile() {
+        try {
+            if (file.createNewFile()) {
                 System.out.println("File created: " + file.getName());
-            }else{
+            } else {
                 System.out.println("File already exists");
             }
-        }catch (IOException ioe){
+        } catch (IOException ioe) {
             System.out.println("Cannot create this file.");
             ioe.printStackTrace();
         }
 
     }
-    public static void writeToFile(String receipt){
+
+    public static void writeToFile(String receipt) {
         try {
-            FileWriter myWriter = new FileWriter("orders.txt",true);
+            FileWriter myWriter = new FileWriter("orders.txt", true);
             myWriter.append(receipt);
             myWriter.append("\n");
             myWriter.close();
