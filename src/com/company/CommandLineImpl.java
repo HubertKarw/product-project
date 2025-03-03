@@ -48,7 +48,7 @@ public class CommandLineImpl implements CommandLine {
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        pm.addProductToCart(cart, (UUID) UUID.fromString(id), quantity);
+        pm.addProductToCart(cart, UUID.fromString(id), quantity);
         System.out.println("added product with id: " + quant + " to cart");
     }
 
