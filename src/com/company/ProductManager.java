@@ -1,11 +1,9 @@
 package com.company;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+
 import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+
 
 public class ProductManager {
     private List<Product> products;
