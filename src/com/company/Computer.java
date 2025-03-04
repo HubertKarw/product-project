@@ -13,7 +13,7 @@ public class Computer extends Product {
 
     @Override
     public Product clone() {
-        return new Computer(this.getId(),this.getName(),this.getPrice(),0,this.processor,this.ram);
+        return new Computer(this.getId(), this.getName(), this.getPrice(), 0, this.processor, this.ram);
     }
 
     public Computer(UUID id, String name, BigDecimal price, int stock, Processor processor, RandomAccessMemory ram) {
