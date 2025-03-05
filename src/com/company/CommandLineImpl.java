@@ -33,7 +33,8 @@ public class CommandLineImpl implements CommandLine {
     @Override
     public void processOrder(Order order) {
         System.out.println("Processing Order");
-        OrderProcessor.process(order);
+        OrderProcessor op = new OrderProcessor(order);
+        op.process();
     }
 
     @Override

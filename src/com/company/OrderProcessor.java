@@ -7,10 +7,18 @@ import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 
-public class OrderProcessor {
-    private static File file = new File("orders.txt");
+public class OrderProcessor extends Thread{
+    private static final File file = new File("orders.txt");
+    private Order orderToProcess;
+    private String receipt;
 
-    public static String createReceipt(Order orderToProcess) {
+    public OrderProcessor(Order orderToProcess){
+        this.orderToProcess = orderToProcess;
+        this.receipt = null;
+        createFile();
+    }
+
+    public  String createReceipt() {
         BigDecimal total = orderToProcess.getTotalPrice();
         String clientName = orderToProcess.getClient().getUsername();
         Cart cart = orderToProcess.getCart();
@@ -26,17 +34,12 @@ public class OrderProcessor {
                         .multiply(BigDecimal.valueOf(product.getStock())).toPlainString() + "pln"))
                 .collect(Collectors.joining("\n")));
         sb.append("\nTotal Price: ").append(total.toPlainString()).append("pln");
+        this.receipt = sb.toString();
         return sb.toString();
     }
 
-    public static void process(Order orderToProcess) {
-        orderToProcess.markOrderAsProcessed();
-        String receipt = createReceipt(orderToProcess);
-        System.out.println(receipt);
-        createFile();
-        writeToFile(receipt);
-        orderToProcess.getCart().placeOrder();
-        orderToProcess.setTotalPrice(BigDecimal.ZERO);
+    public void process() {
+        this.start();
     }
 
     public static void createFile() {
@@ -51,6 +54,17 @@ public class OrderProcessor {
             ioe.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void run() {
+        orderToProcess.markOrderAsProcessed();
+        String receipt = createReceipt();
+        System.out.println(receipt);
+        writeToFile(receipt);
+        orderToProcess.getCart().placeOrder();
+        orderToProcess.setTotalPrice(BigDecimal.ZERO);
+        System.out.println(Thread.activeCount());
     }
 
     public static void writeToFile(String receipt) {

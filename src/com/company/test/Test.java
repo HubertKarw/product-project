@@ -208,7 +208,8 @@ public class Test {
         Order order = new Order(cart);
         System.out.println(order);
 //        OrderProcessor processor = new OrderProcessor(order);
-        OrderProcessor.process(order);
+        OrderProcessor op = new OrderProcessor(order);
+        op.process();
         System.out.println(computer1);
         System.out.println(computer2);
         System.out.println(cart);
