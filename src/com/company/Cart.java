@@ -72,10 +72,6 @@ public class Cart {
         if (this.getProducts().isEmpty()) {
             throw new ProductNotInCartException("your order cannot be placed | no products in cart");
         } else {
-//            this.getProducts()
-//                    .stream()
-//                    .collect(Collectors.toMap(Product::getId, Product::getStock))
-//                    .forEach((k, v) -> System.out.println("id: " + k + " stock: " + v));
             System.out.println("your order has been placed");
             this.setProducts(new ArrayList<Product>());
         }
