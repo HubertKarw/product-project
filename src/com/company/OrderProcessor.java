@@ -39,6 +39,7 @@ public class OrderProcessor extends Thread{
     }
 
     public void process() {
+        System.out.println(Thread.currentThread().getName() + ": current Thread");
         this.start();
     }
 
@@ -64,7 +65,7 @@ public class OrderProcessor extends Thread{
         writeToFile(receipt);
         orderToProcess.getCart().placeOrder();
         orderToProcess.setTotalPrice(BigDecimal.ZERO);
-        System.out.println(Thread.activeCount());
+        System.out.println(Thread.currentThread().getName() + ": finished");
     }
 
     public static void writeToFile(String receipt) {
