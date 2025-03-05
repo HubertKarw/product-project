@@ -2,7 +2,6 @@ package com.company.test;
 
 import com.company.*;
 
-import javax.management.AttributeNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +72,7 @@ public class Test {
         ProductManager manager = new ProductManager(products);
         try {
             System.out.println(manager.findByName("dell"));
-        } catch (AttributeNotFoundException e) {
+        } catch (ProductNotInShopException e) {
             e.printStackTrace();
         }
 
@@ -215,7 +214,8 @@ public class Test {
         System.out.println(cart);
 
     }
-    public static void commandLineImplementationTesting(){
+
+    public static void commandLineImplementationTesting() {
         Product computer1 = new Computer("Dell", BigDecimal.valueOf(123), 100);
         Product computer2 = new Computer("Lenovo", BigDecimal.valueOf(122), 90);
         Product computer3 = new Computer("MacBook", BigDecimal.valueOf(500), 20);
@@ -228,9 +228,9 @@ public class Test {
         CommandLineImpl cml = new CommandLineImpl();
         cml.printCart(cart);
         cml.printProducts(pm);
-        cml.addToCart(pm,cart);
+        cml.addToCart(pm, cart);
         cml.printCart(cart);
-        cml.removeFromCart(pm,cart);
+        cml.removeFromCart(pm, cart);
         cml.printCart(cart);
         Order order = cml.createOrder(cart);
         cml.printOrder(order);

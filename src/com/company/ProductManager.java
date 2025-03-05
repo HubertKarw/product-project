@@ -1,6 +1,5 @@
 package com.company;
 
-import javax.management.AttributeNotFoundException;
 import java.util.List;
 
 import java.util.UUID;
@@ -35,28 +34,28 @@ public class ProductManager {
         }
     }
 
-    public Product findByName(String name) throws AttributeNotFoundException {
+    public Product findByName(String name) throws ProductNotInShopException {
         return products.stream()
                 .filter(product -> product.isNameEquals(name))
                 .limit(1)
                 .findFirst()
-                .orElseThrow(AttributeNotFoundException::new);
+                .orElseThrow(ProductNotInShopException::new);
     }
 
-    public Product findByID(UUID id) throws AttributeNotFoundException {
+    public Product findByID(UUID id) throws ProductNotInShopException {
         return products.stream()
                 .filter(product -> product.isIdEquals(id))
                 .limit(1)
                 .findFirst()
-                .orElseThrow(AttributeNotFoundException::new);
+                .orElseThrow(ProductNotInShopException::new);
     }
 
     public void addProductToCart(Cart cart, UUID productId, int quantity) {
         Product product = null;
         try {
             product = findByID(productId);
-        } catch (AttributeNotFoundException e) {
-            throw new IllegalArgumentException("there is no product with id:" + productId + "in shop | cant`t add product to cart");
+        } catch (ProductNotInShopException e) {
+            throw new ProductNotInShopException("there is no product with id:" + productId + "in shop | cant`t add product to cart");
         }
         Product cartProduct = product.clone();
         if (cart.isIdInCart(productId)) {
@@ -71,14 +70,14 @@ public class ProductManager {
         Product product = null;
         try {
             product = findByID(productId);
-        } catch (AttributeNotFoundException e) {
-            throw new IllegalArgumentException("there is no product with id:" + productId + "in shop");
+        } catch (ProductNotInShopException e) {
+            throw new ProductNotInShopException("there is no product with id:" + productId + "in shop");
         }
         if (cart.isIdInCart(productId)) {
             cart.removeQuantityInCart(this.findInCart(cart, productId), quantity);
             product.increaseStock(quantity);
         } else {
-            throw new IllegalArgumentException("there is no product with id:" + productId + "in cart");
+            throw new ProductNotInCartException("there is no product with id:" + productId + "in cart");
         }
     }
 
