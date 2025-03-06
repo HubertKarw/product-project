@@ -43,7 +43,7 @@ public class OrderProcessor extends Thread{
 
     public void process() {
         System.out.println(Thread.currentThread().getName() + ": current Thread");
-        executor.submit(this);
+        executor.execute(this::run);
     }
 
     public static synchronized void createFile() {
