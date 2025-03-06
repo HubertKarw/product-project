@@ -6,6 +6,7 @@ Internet shop for electronics
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Features](#features)
+* [Project status](#project-status)
 
 ## General info
 This is project creating complete system for internet shop using Java.  
