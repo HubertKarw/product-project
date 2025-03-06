@@ -5,12 +5,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 public class OrderProcessor extends Thread{
     private static final File file = new File("orders.txt");
     private Order orderToProcess;
     private String receipt;
+    ExecutorService executor = Executors.newFixedThreadPool(3);
 
     public OrderProcessor(Order orderToProcess){
         this.orderToProcess = orderToProcess;
@@ -40,10 +43,10 @@ public class OrderProcessor extends Thread{
 
     public void process() {
         System.out.println(Thread.currentThread().getName() + ": current Thread");
-        this.start();
+        executor.submit(this);
     }
 
-    public static void createFile() {
+    public static synchronized void createFile() {
         try {
             if (file.createNewFile()) {
                 System.out.println("File created: " + file.getName());
@@ -68,7 +71,7 @@ public class OrderProcessor extends Thread{
         System.out.println(Thread.currentThread().getName() + ": finished");
     }
 
-    public static void writeToFile(String receipt) {
+    public static synchronized void writeToFile(String receipt) {
         try {
             FileWriter myWriter = new FileWriter("orders.txt", true);
             myWriter.append(receipt);
