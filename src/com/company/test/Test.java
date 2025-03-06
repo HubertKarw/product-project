@@ -242,4 +242,35 @@ public class Test {
         cml.printProducts(pm);
 
     }
+    public static void multipleOrdersAtTheSameTime(){
+        Product computer1 = new Computer("Dell", BigDecimal.valueOf(123), 100);
+        Product computer2 = new Computer("Lenovo", BigDecimal.valueOf(122), 90);
+        Product computer3 = new Computer("MacBook", BigDecimal.valueOf(500), 20);
+        Client client = new Client("123", "123");
+        List<Product> products = new ArrayList<>();
+        products.addAll(List.of(computer1, computer2, computer3));
+        ProductManager pm = new ProductManager(products);
+        Cart cart1 = new Cart(client);
+        Cart cart2 = new Cart(client);
+        Cart cart3 = new Cart(client);
+        Cart cart4 = new Cart(client);
+        pm.addProductToCart(cart1,computer1.getId(),12);
+        pm.addProductToCart(cart1,computer3.getId(),2);
+        pm.addProductToCart(cart2,computer1.getId(),21);
+        pm.addProductToCart(cart3,computer1.getId(),9);
+        pm.addProductToCart(cart4,computer1.getId(),1);
+        pm.addProductToCart(cart4,computer2.getId(),1);
+        Order order1 = new Order(cart1);
+        Order order2 = new Order(cart2);
+        Order order3 = new Order(cart3);
+        Order order4 = new Order(cart4);
+        OrderProcessor orderProcessor1 = new OrderProcessor(order1);
+        OrderProcessor orderProcessor2 = new OrderProcessor(order2);
+        OrderProcessor orderProcessor3 = new OrderProcessor(order3);
+        OrderProcessor orderProcessor4 = new OrderProcessor(order4);
+        orderProcessor1.process();
+        orderProcessor2.process();
+        orderProcessor3.process();
+        orderProcessor4.process();
+    }
 }
