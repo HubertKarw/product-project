@@ -20,14 +20,14 @@ This program allows to:
 
 ## Features
 * Creating products such as computer, smartphone and electronics
-* Displaying list of availible Products
-* creating and displaying Cart with items added by client
-* creating Client
+* Displaying list of available Products
+* Creating and displaying Cart with items added by client
+* Creating Client
 * Ordering items
-* creating receipts for orders
-* keeping information about order times
-* multithreaded order processing
-* option for discounting cart price 
+* Creating receipts for orders
+* Keeping information about order times
+* Multithreaded order processing
+* Option for discounting cart price 
 
 
 ## Project status
