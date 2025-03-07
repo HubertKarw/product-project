@@ -14,10 +14,12 @@ This program allows to:
 * Create users  
 * Manage shopping carts and products
 * Processing orders
-<p style="text-align: right">(<a href="#table-of-contents">back to top</a>)</p>
+<p align="right">(<a href="#table-of-contents">back to top⬆️</a>)</p>
 
 ## Technologies
 * [Java][java-url] SDK version: 18.0.2
+<p align="right">(<a href="#table-of-contents">back to top⬆️</a>)</p>
+
 
 ## Features
 * Creating products such as computer, smartphone and electronics
@@ -28,7 +30,9 @@ This program allows to:
 * Creating receipts for orders
 * Keeping information about order times
 * Multithreaded order processing
-* Option for discounting cart price 
+* Option for discounting cart price
+<p align="right">(<a href="#table-of-contents">back to top⬆️</a>)</p>
+
 
 
 ## Project status
@@ -47,6 +51,8 @@ This program allows to:
 * Task 13 :yellow_square:
 * Task 14 :red_square:
 * Task 15 :red_square:
+<p align="right">(<a href="#table-of-contents">back to top⬆️</a>)</p>
+
 
 
 [java-url]:https://www.java.com/pl/  
