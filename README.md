@@ -18,8 +18,34 @@ This program allows to:
 ## Technologies
 * [Java][java-url] SDK version: 18.0.2
 
+## Features
+* Creating products such as computer, smartphone and electronics
+* Displaying list of availible Products
+* creating and displaying Cart with items added by client
+* creating Client
+* Ordering items
+* creating receipts for orders
+* keeping information about order times
+* multithreaded order processing
+* option for discounting cart price 
+
+
 ## Project status
-:green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::yellow_square::yellow_square::red_square::red_square::red_square:
+* Task 1 :green_square:
+* Task 2 :green_square:
+* Task 3 :green_square:
+* Task 4 :green_square:
+* Task 5 :green_square:
+* Task 6 :green_square:
+* Task 7 :green_square:
+* Task 8 :green_square:
+* Task 9 :green_square:
+* Task 10 :green_square:
+* Task 11 :green_square:
+* Task 12 :green_square:
+* Task 13 :yellow_square:
+* Task 14 :red_square:
+* Task 15 :red_square:
 
 
 [java-url]:https://www.java.com/pl/  
