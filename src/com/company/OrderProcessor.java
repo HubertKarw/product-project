@@ -5,12 +5,23 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
-public class OrderProcessor {
-    private static File file = new File("orders.txt");
+public class OrderProcessor extends Thread{
+    private static final File file = new File("orders.txt");
+    private Order orderToProcess;
+    private String receipt;
+    ExecutorService executor = Executors.newFixedThreadPool(3);
 
-    public static String createReceipt(Order orderToProcess) {
+    public OrderProcessor(Order orderToProcess){
+        this.orderToProcess = orderToProcess;
+        this.receipt = null;
+        createFile();
+    }
+
+    public  String createReceipt() {
         BigDecimal total = orderToProcess.getTotalPrice();
         String clientName = orderToProcess.getClient().getUsername();
         Cart cart = orderToProcess.getCart();
@@ -26,20 +37,16 @@ public class OrderProcessor {
                         .multiply(BigDecimal.valueOf(product.getStock())).toPlainString() + "pln"))
                 .collect(Collectors.joining("\n")));
         sb.append("\nTotal Price: ").append(total.toPlainString()).append("pln");
+        this.receipt = sb.toString();
         return sb.toString();
     }
 
-    public static void process(Order orderToProcess) {
-        orderToProcess.markOrderAsProcessed();
-        String receipt = createReceipt(orderToProcess);
-        System.out.println(receipt);
-        createFile();
-        writeToFile(receipt);
-        orderToProcess.getCart().placeOrder();
-        orderToProcess.setTotalPrice(BigDecimal.ZERO);
+    public void process() {
+        System.out.println(Thread.currentThread().getName() + ": current Thread");
+        executor.execute(this::run);
     }
 
-    public static void createFile() {
+    public static synchronized void createFile() {
         try {
             if (file.createNewFile()) {
                 System.out.println("File created: " + file.getName());
@@ -53,7 +60,18 @@ public class OrderProcessor {
 
     }
 
-    public static void writeToFile(String receipt) {
+    @Override
+    public void run() {
+        orderToProcess.markOrderAsProcessed();
+        String receipt = createReceipt();
+        System.out.println(receipt);
+        writeToFile(receipt);
+        orderToProcess.getCart().placeOrder();
+        orderToProcess.setTotalPrice(BigDecimal.ZERO);
+        System.out.println(Thread.currentThread().getName() + ": finished");
+    }
+
+    public static synchronized void writeToFile(String receipt) {
         try {
             FileWriter myWriter = new FileWriter("orders.txt", true);
             myWriter.append(receipt);

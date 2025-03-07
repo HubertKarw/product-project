@@ -17,6 +17,7 @@ public class Main {
 //        Test.removeMoreItemsFromCart();
 //        Test.orderCart();
 //        Test.processingOrder();
-        Test.commandLineImplementationTesting();
+//        Test.commandLineImplementationTesting();
+        Test.multipleOrdersAtTheSameTime();
     }
 }
