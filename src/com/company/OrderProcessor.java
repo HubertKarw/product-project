@@ -9,19 +9,19 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
-public class OrderProcessor extends Thread{
+public class OrderProcessor extends Thread {
     private static final File file = new File("orders.txt");
     private Order orderToProcess;
     private String receipt;
     ExecutorService executor = Executors.newFixedThreadPool(3);
 
-    public OrderProcessor(Order orderToProcess){
+    public OrderProcessor(Order orderToProcess) {
         this.orderToProcess = orderToProcess;
         this.receipt = null;
         createFile();
     }
 
-    public  String createReceipt() {
+    public String createReceipt() {
         BigDecimal total = orderToProcess.getTotalPrice();
         String clientName = orderToProcess.getClient().getUsername();
         Cart cart = orderToProcess.getCart();
