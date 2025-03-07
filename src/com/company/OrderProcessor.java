@@ -13,7 +13,7 @@ public class OrderProcessor extends Thread {
     private static final File file = new File("orders.txt");
     private Order orderToProcess;
     private String receipt;
-    ExecutorService executor = Executors.newFixedThreadPool(3);
+    private static ExecutorService executor = Executors.newFixedThreadPool(4);
 
     public OrderProcessor(Order orderToProcess) {
         this.orderToProcess = orderToProcess;
@@ -69,6 +69,7 @@ public class OrderProcessor extends Thread {
         orderToProcess.getCart().placeOrder();
         orderToProcess.setTotalPrice(BigDecimal.ZERO);
         System.out.println(Thread.currentThread().getName() + ": finished");
+        System.out.println(Thread.currentThread().getId() + ": finished");
     }
 
     public static synchronized void writeToFile(String receipt) {
