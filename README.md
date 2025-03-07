@@ -14,6 +14,7 @@ This program allows to:
 * Create users  
 * Manage shopping carts and products
 * Processing orders
+<p style="text-align: right">(<a href="#table-of-contents">back to top</a>)</p>
 
 ## Technologies
 * [Java][java-url] SDK version: 18.0.2
