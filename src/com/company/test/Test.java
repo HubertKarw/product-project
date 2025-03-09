@@ -334,10 +334,5 @@ public class Test {
         OrderProcessor orderProcessor4 = new OrderProcessor(order4);
         orderProcessor4.process();
         Thread.sleep(100);
-        System.out.println(order1.getOrderDate());
-        System.out.println(order2.getOrderDate());
-        System.out.println(order3.getOrderDate());
-        System.out.println(order4.getOrderDate());
-        System.out.println("endofcode");
     }
 }
