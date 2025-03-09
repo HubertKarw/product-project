@@ -59,7 +59,9 @@ public class Order {
     public void markOrderAsProcessed() {
         ZoneId zoneId = ZoneId.systemDefault();
         ZonedDateTime timeNow = ZonedDateTime.now();
+        System.out.println("Original Order Time (" + zoneId + "): " + timeNow);
         this.orderDate = OffsetDateTime.of(LocalDateTime.from(timeNow), zoneId.getRules().getOffset(Instant.from(timeNow))).atZoneSameInstant(ZoneId.of("Europe/Warsaw"));
+        System.out.println("Converted Order Time (Europe/Warsaw): " + this.orderDate);
     }
 
     @Override
