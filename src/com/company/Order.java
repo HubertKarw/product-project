@@ -57,10 +57,9 @@ public class Order {
     }
 
     public void markOrderAsProcessed() {
-//        ZoneId zoneId = ZoneId.of("Australia/Sydney");
         ZoneId zoneId = ZoneId.systemDefault();
-        LocalDateTime timeNow = LocalDateTime.now();
-        this.orderDate = OffsetDateTime.of(timeNow, zoneId.getRules().getOffset(timeNow)).atZoneSameInstant(ZoneId.of("Europe/Warsaw"));
+        ZonedDateTime timeNow = ZonedDateTime.now();
+        this.orderDate = OffsetDateTime.of(LocalDateTime.from(timeNow), zoneId.getRules().getOffset(Instant.from(timeNow))).atZoneSameInstant(ZoneId.of("Europe/Warsaw"));
     }
 
     @Override

@@ -18,6 +18,7 @@ public class Main {
 //        Test.orderCart();
 //        Test.processingOrder();
 //        Test.commandLineImplementationTesting();
-        Test.multipleOrdersAtTheSameTime();
+//        Test.multipleOrdersAtTheSameTime();
+        Test.ordersFromDifferentTimeZones();
     }
 }
