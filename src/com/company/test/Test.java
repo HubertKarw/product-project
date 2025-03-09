@@ -294,7 +294,7 @@ public class Test {
         orderProcessor6.process();
         orderProcessor7.process();
     }
-    public static void ordersFromDifferentTimeZones(){
+    public static void ordersFromDifferentTimeZones() throws InterruptedException {
         Product computer1 = new Computer("Dell", BigDecimal.valueOf(123), 100);
         Product computer2 = new Computer("Lenovo", BigDecimal.valueOf(122), 90);
         Product computer3 = new Computer("MacBook", BigDecimal.valueOf(500), 20);
@@ -330,6 +330,11 @@ public class Test {
         orderProcessor2.process();
         orderProcessor3.process();
         orderProcessor4.process();
-
+        Thread.sleep(100);
+        System.out.println(order1.getOrderDate());
+        System.out.println(order2.getOrderDate());
+        System.out.println(order3.getOrderDate());
+        System.out.println(order4.getOrderDate());
+        System.out.println("endofcode");
     }
 }
