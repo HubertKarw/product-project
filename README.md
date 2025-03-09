@@ -51,7 +51,7 @@ This program allows to:
 * Task 12 :green_square:
 * Task 13 :yellow_square:
 * Task 14 :green_square:
-* Task 15 :red_square:
+* Task 15 :yellow_square:
 <p align="right">(<a href="#table-of-contents">back to top⬆️</a>)</p>
 
 ## Featured code
