@@ -7,6 +7,7 @@ Internet shop for electronics
 * [Technologies](#technologies)
 * [Features](#features)
 * [Project status](#project-status)
+* [Featured code](#featured-code)
 
 ## General info
 This is project creating complete system for internet shop using Java.  
@@ -53,6 +54,21 @@ This program allows to:
 * Task 15 :red_square:
 <p align="right">(<a href="#table-of-contents">back to top⬆️</a>)</p>
 
+## Featured code
+Code for multi thread order processing
+```
+    public void run() {
+        orderToProcess.markOrderAsProcessed();
+        String receipt = createReceipt();
+        System.out.println(receipt);
+        writeToFile(receipt);
+        orderToProcess.getCart().placeOrder();
+        orderToProcess.setTotalPrice(BigDecimal.ZERO);
+        System.out.println(Thread.currentThread().getName() + ": finished");
+        System.out.println(Thread.currentThread().getId() + ": finished");
+    }
+```
+<p align="right">(<a href="#table-of-contents">back to top⬆️</a>)</p>
 
 
 [java-url]:https://www.java.com/pl/  
