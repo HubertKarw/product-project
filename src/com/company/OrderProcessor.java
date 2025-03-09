@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -28,7 +29,7 @@ public class OrderProcessor extends Thread {
         StringBuilder sb = new StringBuilder("Client: '");
         sb.append(clientName).append("\'\n");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        sb.append("Order date: ").append(orderToProcess.getOrderDate().format(formatter)).append("\n");
+        sb.append("Order date: ").append(orderToProcess.getOrderDate().withZoneSameInstant(ZoneId.systemDefault()).format(formatter)).append("\n");
         sb.append("items:").append("\n");
         sb.append(cart
                 .getProducts()
