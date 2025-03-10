@@ -245,7 +245,8 @@ public class Test {
         cml.printProducts(pm);
 
     }
-    public static void multipleOrdersAtTheSameTime(){
+
+    public static void multipleOrdersAtTheSameTime() {
         Product computer1 = new Computer("Dell", BigDecimal.valueOf(123), 100);
         Product computer2 = new Computer("Lenovo", BigDecimal.valueOf(122), 90);
         Product computer3 = new Computer("MacBook", BigDecimal.valueOf(500), 20);
@@ -260,18 +261,18 @@ public class Test {
         Cart cart5 = new Cart(client);
         Cart cart6 = new Cart(client);
         Cart cart7 = new Cart(client);
-        pm.addProductToCart(cart1,computer1.getId(),12);
-        pm.addProductToCart(cart1,computer3.getId(),2);
-        pm.addProductToCart(cart2,computer1.getId(),21);
-        pm.addProductToCart(cart3,computer1.getId(),9);
-        pm.addProductToCart(cart4,computer1.getId(),1);
-        pm.addProductToCart(cart4,computer2.getId(),1);
-        pm.addProductToCart(cart5,computer1.getId(),1);
-        pm.addProductToCart(cart5,computer2.getId(),1);
-        pm.addProductToCart(cart6,computer1.getId(),1);
-        pm.addProductToCart(cart6,computer2.getId(),1);
-        pm.addProductToCart(cart7,computer1.getId(),1);
-        pm.addProductToCart(cart7,computer2.getId(),1);
+        pm.addProductToCart(cart1, computer1.getId(), 12);
+        pm.addProductToCart(cart1, computer3.getId(), 2);
+        pm.addProductToCart(cart2, computer1.getId(), 21);
+        pm.addProductToCart(cart3, computer1.getId(), 9);
+        pm.addProductToCart(cart4, computer1.getId(), 1);
+        pm.addProductToCart(cart4, computer2.getId(), 1);
+        pm.addProductToCart(cart5, computer1.getId(), 1);
+        pm.addProductToCart(cart5, computer2.getId(), 1);
+        pm.addProductToCart(cart6, computer1.getId(), 1);
+        pm.addProductToCart(cart6, computer2.getId(), 1);
+        pm.addProductToCart(cart7, computer1.getId(), 1);
+        pm.addProductToCart(cart7, computer2.getId(), 1);
         Order order1 = new Order(cart1);
         Order order2 = new Order(cart2);
         Order order3 = new Order(cart3);
@@ -294,6 +295,7 @@ public class Test {
         orderProcessor6.process();
         orderProcessor7.process();
     }
+
     public static void ordersFromDifferentTimeZones() throws InterruptedException {
         Product computer1 = new Computer("Dell", BigDecimal.valueOf(123), 100);
         Product computer2 = new Computer("Lenovo", BigDecimal.valueOf(122), 90);
@@ -306,12 +308,12 @@ public class Test {
         Cart cart2 = new Cart(client);
         Cart cart3 = new Cart(client);
         Cart cart4 = new Cart(client);
-        pm.addProductToCart(cart1,computer1.getId(),12);
-        pm.addProductToCart(cart1,computer3.getId(),2);
-        pm.addProductToCart(cart2,computer1.getId(),21);
-        pm.addProductToCart(cart3,computer1.getId(),9);
-        pm.addProductToCart(cart4,computer1.getId(),1);
-        pm.addProductToCart(cart4,computer2.getId(),1);
+        pm.addProductToCart(cart1, computer1.getId(), 12);
+        pm.addProductToCart(cart1, computer3.getId(), 2);
+        pm.addProductToCart(cart2, computer1.getId(), 21);
+        pm.addProductToCart(cart3, computer1.getId(), 9);
+        pm.addProductToCart(cart4, computer1.getId(), 1);
+        pm.addProductToCart(cart4, computer2.getId(), 1);
         Order order1 = new Order(cart1);
         Order order2 = new Order(cart2);
         Order order3 = new Order(cart3);
