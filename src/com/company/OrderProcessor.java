@@ -10,18 +10,36 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
+/**
+ * This is class for processing orders containing multi thread solution to process orders
+ *
+ * @author hubert_karw
+ */
 public class OrderProcessor extends Thread {
     private static final File file = new File("orders.txt");
     private Order orderToProcess;
     private String receipt;
+    /**
+     * ExecutorService that has thread pool of threads to process the orders
+     */
     private static ExecutorService executor = Executors.newFixedThreadPool(4);
 
+    /**
+     * This is constructor for Order processor that creates an object of OrderProcessor and then creates a file for receipts or if it exists does nothing.
+     *
+     * @param orderToProcess Order you wish to process
+     */
     public OrderProcessor(Order orderToProcess) {
         this.orderToProcess = orderToProcess;
         this.receipt = null;
         createFile();
     }
 
+    /**
+     * Creates a receipt from the user specified order
+     *
+     * @return String with a receipt that has a local time of the user
+     */
     public String createReceipt() {
         BigDecimal total = orderToProcess.getTotalPrice();
         String clientName = orderToProcess.getClient().getUsername();
