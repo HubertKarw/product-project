@@ -56,6 +56,7 @@ This program allows to:
 
 ## Featured code
 Code for multi thread order processing
+* To improve order processing time and allow processing multiple orders at once i`ve use asychronized method for processing order. It uses synchronized  in few methods to make sure that processing multiple orders at the same time does not lead to wrong outputs in problematic moments of the code running.
 ```
     public void run() {
         orderToProcess.markOrderAsProcessed();
