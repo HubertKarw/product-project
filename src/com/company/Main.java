@@ -4,7 +4,7 @@ import com.company.test.Test;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
 //        Test.creatingAndCheckingCorrectDisplayOfAllProducts();
 //        Test.processorTest();
@@ -18,6 +18,7 @@ public class Main {
 //        Test.orderCart();
 //        Test.processingOrder();
 //        Test.commandLineImplementationTesting();
-        Test.multipleOrdersAtTheSameTime();
+//        Test.multipleOrdersAtTheSameTime();
+        Test.ordersFromDifferentTimeZones();
     }
 }

@@ -2,13 +2,13 @@ package com.company;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.LocalDateTime;
+import java.time.*;
 
 public class Order {
     private Cart cart;
     private Client client;
     private BigDecimal totalPrice;
-    private LocalDateTime orderDate;
+    private ZonedDateTime orderDate;
 
     public Order(Cart cart) {
         this.cart = cart;
@@ -48,16 +48,20 @@ public class Order {
         this.totalPrice = this.totalPrice.multiply(BigDecimal.ONE.subtract(discount)).setScale(2, RoundingMode.HALF_UP);
     }
 
-    public LocalDateTime getOrderDate() {
+    public ZonedDateTime getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(LocalDateTime orderDate) {
+    public void setOrderDate(ZonedDateTime orderDate) {
         this.orderDate = orderDate;
     }
 
     public void markOrderAsProcessed() {
-        this.orderDate = LocalDateTime.now();
+        ZoneId zoneId = ZoneId.systemDefault();
+        ZonedDateTime timeNow = ZonedDateTime.now();
+        System.out.println("Original Order Time (" + zoneId + "): " + timeNow);
+        this.orderDate = OffsetDateTime.of(LocalDateTime.from(timeNow), zoneId.getRules().getOffset(Instant.from(timeNow))).atZoneSameInstant(ZoneId.of("Europe/Warsaw"));
+        System.out.println("Converted Order Time (Europe/Warsaw): " + this.orderDate);
     }
 
     @Override
